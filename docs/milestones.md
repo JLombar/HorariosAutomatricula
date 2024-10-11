@@ -1,16 +1,16 @@
 # Milestones
 ## Milestone 0: Entendimiento del problema y modelado inicial
-* Objetivo: Entender y comprender la HU1, que será el principal foco de desarrollo, para definir el problema que se plantea para ser desarrollado, incluyendo un modelo inicial que será modificado y ampliado con el resto de historias de usuario en un futuro.
+* Entender y comprender la HU1, que será el principal foco de desarrollo, para definir el problema que se plantea para ser desarrollado, incluyendo un modelo inicial que será modificado y ampliado con el resto de historias de usuario en un futuro.
 * Entregable: Código que represente los elementos del dominio del problema que se va a desarrollar.
 * Viabilidad: Cuando se llegue a un mutuo acuerdo entre el revisor, desarrollador principal y el encargado de desarrollar este milestone. Todas las partes deben estar de acuerdo en que la abstracción del problema ha sido correctamente definida y refleja con precisión los requisitos del proyecto, permitiendo así avanzar hacia la siguiente fase del desarrollo.
 
 ## Milestone 1: Lectura del archivo donde figuran las asignaturas
-* Objetivo: Realizar la implementación que sea capaz de leer el archivo PDF donde se encuentran las asignaturas.
+* Realizar la implementación que sea capaz de leer el archivo PDF donde se encuentran las asignaturas.
 * Entregable: Código capaz de abrir y leer un el archivo de las asignaturas.
 * Viabilidad: La viabilidad se alcanzará cuando se haya validado que el código puede abrir y leer correctamente el archivo donde figuran las asignaturas, pasando los test necesario que validen el objetivo.
 
 ## Milestone 2: Procesamiento del contenido extraído
-* Objetivo: Realizar el procesamiento del contenido del archivo donde figuran las asignaturas.
+* Realizar el procesamiento del contenido del archivo donde figuran las asignaturas.
 * Entregable: Código capaz extraer y procesar el texto para identificar y limpiar los nombres de las asignaturas, eliminando caracteres no deseados como saltos de línea o espacios en blanco.
 * Viabilidad: La viabilidad se alcanzará cuando se haya validado que el código puede extraer y procesar correctamente el contenido del archivo, asegurando la identificación y limpieza adecuada de los nombres de las asignaturas, pasando los tests necesarios que validen este objetivo.
 
