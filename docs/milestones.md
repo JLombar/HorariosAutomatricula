@@ -2,7 +2,7 @@
 ## Milestone 0: Entendimiento del problema y modelado inicial
 * Definir el dominio del problema de la HU1 que será el principal foco de desarrollo. Para ello se incluirán herramientas a ser usadas, así como un modelo inicial que será modificado y ampliado con el resto de historias de usuario en un futuro.
 * Entregable: Código que represente los elementos del dominio del problema que se va a desarrollar.
-* Viabilidad: Cuando el producto represente el dominio del problema presentado en la HU1.
+* Viabilidad: Cuando el producto represente el dominio del problema presentado en la HU1 y que siga las buenas prácticas del lenguaje elegido.
 
 ## Milestone 1: Lectura del archivo donde figuran las asignaturas
 * Realizar la implementación que sea capaz de leer el archivo PDF donde se encuentran las asignaturas.
