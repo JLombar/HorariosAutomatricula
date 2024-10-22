@@ -18,3 +18,18 @@ class Horario:
     
     def __str__(self):
         return f"{self.dia}: {self.hora_inicio} - {self.hora_fin}"
+    
+    def convertir_a_minutos(self, hora):
+        horas, minutos = map(int, hora.split(":"))
+        return horas*60 + minutos
+    
+    def horas_solapadas(self, otra_hora):
+        if self.dia != otra_hora.dia:
+            return False
+        
+        inicio_1_minutos = self.convertir_a_minutos(self.hora_inicio)
+        fin_1_minutos = self.convertir_a_minutos(self.hora_fin)
+        inicio_2_minutos = self.convertir_a_minutos(otra_hora.hora_inicio)
+        fin_2_minutos = self.convertir_a_minutos(otra_hora.hora_fin)
+        
+        return not (fin_1_minutos <= inicio_2_minutos or fin_2_minutos <= inicio_1_minutos)
