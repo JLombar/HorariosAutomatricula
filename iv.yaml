@@ -1,2 +1,3 @@
 lenguaje: python
 entidad: src/main.py
+entidad: src/horario.py
