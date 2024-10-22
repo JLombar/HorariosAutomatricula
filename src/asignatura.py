@@ -16,3 +16,6 @@ class Asignatura:
     
     def __str__(self):
         return f"Asignatura: {self.nombre}  (Grupo: {self.grupo}) - Horario: {self.horario}"
+    
+    def asignaturas_solapadas(self, otra_asignatura):
+        return self.horario.horas_solapadas(self.horario, otra_asignatura.horario)
