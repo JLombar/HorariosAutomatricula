@@ -2,3 +2,4 @@ lenguaje: python
 entidad: src/main.py
 entidad: src/horario.py
 entidad: src/asignatura.py
+entidad: src/mencion.py

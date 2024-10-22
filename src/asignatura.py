@@ -1,7 +1,13 @@
 from horario import Horario
+from mencion import TipoMencion
 
 class Asignatura:
-    def __init__(self, nombre, horario, grupo, profesor=None, mencion=None):
+    def __init__(self, nombre, horario: Horario, grupo, profesor=None, mencion: TipoMencion = TipoMencion.BASICA):
+        if not isinstance(horario, Horario):
+            raise TypeError("El horario debe instancia de la clase Horario")
+        if not isinstance(mencion, TipoMencion):
+            raise TypeError("La mención debe instancia de TipoMencion")
+        
         self.nombre = nombre
         self.horario = horario
         self.grupo = grupo
