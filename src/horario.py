@@ -1,7 +1,7 @@
 import re 
 
 class Horario:
-    DIAS_VALIDOS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+    DIAS_VALIDOS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
     HORA_REGEX = r"^(?:[01]\d|2[0-3]):[0-5]\d$"  # Formato HH:MM (00:00 a 23:59)
     
     def __init__(self, dia, hora_inicio, hora_fin):
