@@ -2,7 +2,18 @@ from .horario import Horario
 from .mencion import TipoMencion
 
 class Asignatura:
+    """
+    Clase que representa una asignatura con un horario de teoría y varios subgrupos de prácticas.
+    """
     def __init__(self, nombre, horario_teoria: Horario, horarios_practicas, grupo, mencion: TipoMencion = TipoMencion.BASICA):
+        """
+        Inicializa la asignatura con nombre, horario de teoría, horarios de prácticas, grupo y mención.
+        :param nombre: Nombre de la asignatura.
+        :param horario_teoria: Horario de la clase de teoría.
+        :param horarios_practicas: Lista de horarios de prácticas.
+        :param grupo: El grupo de la asignatura.
+        :param mencion: Tipo de mención, con valor predeterminado BASICA.
+        """
         if not isinstance(horario_teoria, Horario):
             raise TypeError("El horario debe instancia de la clase Horario")
         if not isinstance(mencion, TipoMencion):
@@ -22,12 +33,23 @@ class Asignatura:
         
     
     def __str__(self):
+        """
+        Representa la asignatura como una cadena, incluyendo el horario de teoría y los horarios de prácticas.
+        :return: Una cadena con la información completa de la asignatura.
+        """
         practicas_str = ""
         if self.horarios_practicas:
             practicas_str = "\nHorarios de prácticas:\n" + "\n".join([str(horario) for horario in self.horarios_practicas])
-        return f"Asignatura: {self.nombre} (Grupo: {self.grupo}) - Horario Teórico: {self.horario_teoria}{practicas_str}"
+        return f"Asignatura: {self.nombre} (Grupo: {self.grupo}) - Horario Teoría: {self.horario_teoria}{practicas_str}"
     
     def asignaturas_solapadas(self, otra_asignatura):
+        """
+        Verifica si los horarios teóricos y de prácticas de dos asignaturas se solapan.
+        - Si los horarios teóricos se solapan, retorna True.
+        - Si alguna combinación de horarios de prácticas no se solapa, la imprime y retorna False.
+        :param otra_asignatura: Asignatura a comparar.
+        :return: True si todos los horarios de teoría y prácticas se solapan, False si alguna combinación de prácticas no se solapa.
+        """
         solapamiento_teoria = self.horario_teoria.horas_solapadas(otra_asignatura.horario_teoria)
         
         if solapamiento_teoria:

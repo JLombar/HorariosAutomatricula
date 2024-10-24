@@ -1,6 +1,9 @@
 from enum import Enum
 
 class TipoMencion(Enum):
+    """
+    Enumerado que define los diferentes tipos de menciones para una asignatura.
+    """
     BASICA = "Básica"
     OBLIGATORIA = "Obligatoria"
     OPTATIVA = "Optativa"
