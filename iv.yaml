@@ -1,5 +1,5 @@
 lenguaje: python
-entidad: src/main.py
-entidad: src/horario.py
-entidad: src/asignatura.py
-entidad: src/mencion.py
+metodo_entidades: horarios_automatricula/conflictos.py
+objeto_valor: horarios_automatricula/horario.py
+entidad: horarios_automatricula/asignatura.py
+objeto_valor: horarios_automatricula/mencion.py
