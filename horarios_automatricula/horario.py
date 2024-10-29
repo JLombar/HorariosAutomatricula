@@ -27,34 +27,3 @@ class Horario:
         self.hora_inicio = hora_inicio
         self.hora_fin = hora_fin
     
-    def __str__(self):
-        """
-        Representación en cadena del objeto Horario.
-        :return: Una cadena con el formato "Día: hora_inicio - hora_fin".
-        """
-        return f"{self.dia}: {self.hora_inicio} - {self.hora_fin}"
-    
-    def convertir_a_minutos(self, hora):
-        """
-        Convierte una hora en formato HH:MM a minutos desde las 00:00.
-        :param hora: Hora en formato HH:MM.
-        :return: El número de minutos desde las 00:00.
-        """
-        horas, minutos = map(int, hora.split(":"))
-        return horas*60 + minutos
-    
-    def horas_solapadas(self, otra_hora):
-        """
-        Verifica si dos horarios se solapan.
-        :param otra_hora: Un objeto Horario con el que se comparará el solapamiento.
-        :return: True si los horarios se solapan, False en caso contrario.
-        """
-        if self.dia != otra_hora.dia:
-            return False
-        
-        inicio_1_minutos = self.convertir_a_minutos(self.hora_inicio)
-        fin_1_minutos = self.convertir_a_minutos(self.hora_fin)
-        inicio_2_minutos = self.convertir_a_minutos(otra_hora.hora_inicio)
-        fin_2_minutos = self.convertir_a_minutos(otra_hora.hora_fin)
-        
-        return not (fin_1_minutos <= inicio_2_minutos or fin_2_minutos <= inicio_1_minutos)
