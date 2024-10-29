@@ -5,7 +5,7 @@ class Asignatura:
     """
     Clase que representa una asignatura con un horario de teoría y varios subgrupos de prácticas.
     """
-    def __init__(self, nombre, horario_teoria: Horario, horarios_practicas, grupo, mencion: TipoMencion = TipoMencion.BASICA):
+    def __init__(self, nombre, horario_teoria: Horario, horarios_practicas, grupo):
         """
         Inicializa la asignatura con nombre, horario de teoría, horarios de prácticas, grupo y mención.
         :param nombre: Nombre de la asignatura.
@@ -16,8 +16,6 @@ class Asignatura:
         """
         if not isinstance(horario_teoria, Horario):
             raise TypeError("El horario debe instancia de la clase Horario")
-        if not isinstance(mencion, TipoMencion):
-            raise TypeError("La mención debe instancia de TipoMencion")
         if not isinstance(horarios_practicas, list):
             raise TypeError("Los horarios de prácticas deben ser un vector (lista)")
         
@@ -29,4 +27,3 @@ class Asignatura:
         self.horario_teoria = horario_teoria
         self.grupo = grupo
         self.horarios_practicas = horarios_practicas
-        self.mencion = mencion
