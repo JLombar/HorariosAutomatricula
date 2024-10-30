@@ -1,7 +1,8 @@
 # Historias de usuario
 ## [HU001] 
-Me llamo Carlos. Actualmente voy a empezar mi tercer año en Ingeniería Informática, aunque en la carrera no me ha ido muy bien, por lo que tengo muchas asignaturas pendientes.  
-Este año, al igual que el anterior, he intentado matricularme en una gran cantidad de asignaturas para reducir la cantidad de suspensas que aún tengo por aprobar. Al ser un estudiante con muchas asignaturas, siempre me encuentro con que me coinciden, debido al elevado número de materias que escojo cada año, lo que se ha convertido en un problema para mí. Me gustaría poder elegir las asignaturas de manera que, desde el primer momento, no coincidan entre ellas, evitándome problemas como tener que ir a secretaría al principio del cuatrimestre para solicitar un cambio de grupo, lo que aumenta aún más la carga de trabajo.
+Me llamo Carlos; actualmente, voy a empezar mi tercer año en Ingeniería Informática. Aunque en la carrera no me ha ido muy bien y tengo muchas asignaturas pendientes, este año, al igual que el anterior, he intentado matricularme en una gran cantidad de materias para reducir las suspensas que aún tengo por aprobar.
+
+Al ser un estudiante con muchas asignaturas, siempre me encuentro con que me coinciden los horarios de teoría y los de subgrupos de prácticas de diferentes asignaturas entre sí, debido al elevado número de materias que escojo cada año. Esto se ha convertido en un problema para mí; me gustaría poder elegir las asignaturas de manera que, desde el primer momento, no coincidan sus horarios, evitándome problemas como tener que ir a secretaría al principio del cuatrimestre para solicitar un cambio de grupo, lo cual aumenta aún más la carga de trabajo.
 
 [User Journey aquí](https://github.com/JLombar/HorariosAutomatricula/pull/2/files#diff-e11f2a077252ec5746bfa517742066b0fb0e4216a28b9f3bf1daeabfdf04d486)
 
