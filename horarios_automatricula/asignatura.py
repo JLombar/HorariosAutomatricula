@@ -11,7 +11,6 @@ class Asignatura:
         :param horario_teoria: Horario de la clase de teoría.
         :param horarios_practicas: Lista de horarios de prácticas.
         :param grupo: El grupo de la asignatura.
-        :param mencion: Tipo de mención, con valor predeterminado BASICA.
         """
         if not isinstance(horario_teoria, Horario):
             raise TypeError("El horario debe instancia de la clase Horario")
