@@ -1,6 +1,6 @@
 from .grupo import Grupo
 
-class Asignatura:
+class Asignatura_Grupos:
     def __init__(self, nombre, grupos):
         for grupo in grupos:
             if not isinstance(grupo, Grupo):
