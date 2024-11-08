@@ -1,0 +1,19 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "Horarios Automatricula"
+version = "0.1.0"
+description = "Sistema para gestionar horarios en la automatrícula de estudiantes."
+authors = ["Jorge Lombardo <jorgelombardo@correo.ugr.es>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+
+[tool.poetry.dev-dependencies]
+
+[[tool.poetry.packages]]
+include = "horarios_automatricula"
