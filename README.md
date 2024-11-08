@@ -20,6 +20,11 @@ Para comprobar la sintaxis de los ficheros actuales:
 make check
 ```
 
+Para realizar la instalación y comprobar sintaxis:
+```bash
+make install check
+```
+
 ## Más información
 [Documento con los horarios de Ingeniería Infomática UGR](https://etsiit.ugr.es/sites/centros/etsiit/public/inline-files/HorariosGII%2824-25%29_0.pdf)   
 
