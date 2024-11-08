@@ -14,8 +14,7 @@ readme = "README.md"
 python = ">=3.8.1"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^6.0.0"  # Herramienta para verificar la sintaxis
-pytest = "^7.0"    # Herramienta para correr pruebas unitarias
+flake8 = "^6.0.0"
 
 [[tool.poetry.packages]]
 include = "horarios_automatricula"
