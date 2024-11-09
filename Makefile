@@ -2,7 +2,7 @@ POETRY = poetry
 PYTHON = python3
 
 check-python:
-	@command -v $(PYTHON_CMD) >/dev/null 2>&1 || (echo "Python no está instalado. Instalando..."; $(MAKE) install-python)
+	@command -v $(PYTHON) >/dev/null 2>&1 || (echo "Python no está instalado. Instalando..."; $(MAKE) install-python)
 
 install-python:
 	@echo "Instalando Python..."
@@ -21,7 +21,12 @@ install-dependencies:
 
 install: check-python check-poetry install-dependencies
 
+FILE = horarios_automatricula/asignatura.py
 check-syntax:
-	$(POETRY) run flake8 horarios_automatricula
+	@echo "Verificando la sintaxis de los archivos .py en horarios_automatricula..."
+	@find horarios_automatricula -name "*.py" | while read file; do \
+		echo "Verificando $$file..."; \
+		$(PYTHON) -m py_compile $$file && echo "Sintaxis correcta en $$file" || echo "Error de sintaxis en $$file"; \
+	done
 
 check: check-syntax

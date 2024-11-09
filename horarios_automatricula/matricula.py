@@ -1,4 +1,4 @@
-from .asignatura import Asignatura_Grupos
+from .asignatura import AsignaturaGrupos
 
 
 class Matricula:
