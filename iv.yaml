@@ -1,5 +1,5 @@
 lenguaje: python
 entidad: horarios_automatricula/grupo.py
 automatizar:
-  fichero: Makefile
-  orden: make install, make check
+  fichero: make install
+  orden: make check
