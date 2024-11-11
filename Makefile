@@ -7,7 +7,7 @@ check-python:
 install-python:
 	@echo "Instalando Python..."
 	@sudo apt update
-	@sudo apt install -y python3 python3-pip
+	@sudo apt install -y python
 
 check-poetry:
 	@command -v $(POETRY) >/dev/null 2>&1 || (echo "Poetry no está instalado. Instalando..."; $(MAKE) install-poetry)
@@ -21,7 +21,6 @@ install-dependencies:
 
 install: check-python check-poetry install-dependencies
 
-FILE = horarios_automatricula/asignatura.py
 check:
 	@echo "Verificando la sintaxis de los archivos .py en horarios_automatricula..."
 	@find horarios_automatricula -name "*.py" | while read file; do \
