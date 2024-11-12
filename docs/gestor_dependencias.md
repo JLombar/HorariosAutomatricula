@@ -1,6 +1,10 @@
 # Gestor de dependencias
 ## Opciones
-Durante el objetivo 2, el encargado de trabajar en el repositorio usó [pyproject.toml](../pyproyect.toml) como archivo de configuración para el desarrollo del proyecto, por ello se elegirá un gestor que sea compatible con el mismo. Algunas de las opciones más comunes son:
+Durante el objetivo 2, el encargado de trabajar en el repositorio usó [pyproject.toml](../pyproject.toml) como archivo de configuración para el desarrollo del proyecto.  
+pyproject.toml se eligió ya que, como se menciona en el [Milestone 0](https://github.com/JLombar/HorariosAutomatricula/milestone/3) se deben seguir las buenas prácticas del lenguaje, para ello se debe crear un pyproject.toml al trabajar con Python.
+Si buscamos información en páginas web como [esta](https://www.reddit.com/r/learnpython/comments/yqq551/pyprojecttoml_setupcfg_setuppy_whats_the/) o [esta](https://ericmjl.github.io/blog/2023/8/31/whats-the-difference-between-setupcfg-pyprojecttoml-and-setuppy/), en las que explica que desde el PEP 517 y 518 (El PEP es una Propuesta de Mejora de Python (Python Enhancement Proposal)) se llega al acuerdo de usar pyproject.toml como opción a la hora de configurar las builds en Python y, a no ser que exista un motivo de importancia, se debe evitar usar otros tipos de archivos de configuración en Python.
+
+Por ello se elegirá un gestor que sea compatible con el mismo. Algunas de las opciones más comunes son:
 
 ### 1. pip
 * Gestor de paquetes de Python y viene preinstalado con la mayoría de las instalaciones de Python.
