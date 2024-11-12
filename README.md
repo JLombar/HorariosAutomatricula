@@ -7,6 +7,9 @@ Todos los años, una gran cantidad de alumnos de Ingeniería Informática de la 
 ## Gestor de dependencias y automatización de tareas
 Las elecciones sobre el [gestor de dependencias](./docs/gestor_dependencias.md) y la [herramienta de automatización de tareas](./docs/gestor_tareas.md) están enlazadas en este texto en caso de que quieran consularse.
 
+# Tareas automatizadas
+Se puede consultar el fichero [iv.yaml](./iv.yaml) para consultar el  de fichero que se usa para automatizar tareas y la orden necesaria para ejecutarlo. En nuestro caso Makefile y make, respectivamente
+
 ## Instalación
 Si queremos instalar todo lo necesario para ejecutar el programa debemos instalar Python, Poetry así como las dependencias necesarias:
 ```bash
