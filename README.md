@@ -8,22 +8,16 @@ Todos los años, una gran cantidad de alumnos de Ingeniería Informática de la 
 Las elecciones sobre el [gestor de dependencias](./docs/gestor_dependencias.md) y la [herramienta de automatización de tareas](./docs/gestor_tareas.md) están enlazadas en este texto en caso de que quieran consularse.
 
 # Tareas automatizadas
-Se puede consultar el fichero [iv.yaml](./iv.yaml) para consultar el  de fichero que se usa para automatizar tareas y la orden necesaria para ejecutarlo. En nuestro caso Makefile y make, respectivamente
+Se puede consultar el fichero [iv.yaml](./iv.yaml) para consultar el  de fichero que se usa para automatizar tareas y la orden necesaria para ejecutarlo.
 
 ## Instalación
-Si queremos instalar todo lo necesario para ejecutar el programa debemos instalar Python, Poetry así como las dependencias necesarias:
+Si queremos instalar todo lo necesario para ejecutar el programa debemos instalar Python, Poetry así como las dependencias necesarias, para ello debemos ejecutar, según las claves de [iv.yaml](./iv.yaml) "sudo orden install", que en nuestro caso sería:
 ```bash
-make install
+sudo make install
 ```
 
 ## Comprobar sintaxis del proyecto
-Si se quiere comprobar la sintaxis del proyecto se debe ejecutar: 
+Si se quiere comprobar la sintaxis del proyecto se debe ejecutar según las claves de [iv.yaml](./iv.yaml) "orden check", que en nuestro caso sería: 
 ```bash
 make check
-```
-
-## Instalación y comprobación
-Si se quieren realizar ambas tareas anteriores a la vez se debe ejecutar:
-```bash
-make install check
 ```
