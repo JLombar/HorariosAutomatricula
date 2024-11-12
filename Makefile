@@ -1,23 +1,22 @@
-POETRY = poetry
-PYTHON = python3
-
 check-python:
-	@command -v $(PYTHON) >/dev/null 2>&1 || (echo "Python no está instalado. Instalando..."; $(MAKE) install-python)
+	@command -v python3 >/dev/null 2>&1 || (echo "Python no está instalado. Instalando..."; $(MAKE) install-python)
 
 install-python:
 	@echo "Instalando Python..."
-	@sudo apt update
-	@sudo apt install -y python
+	@wget https://www.python.org/ftp/python/3.9.10/Python-3.9.10.tgz
+	@tar -xzf Python-3.9.10.tgz
+	@cd Python-3.9.10 && ./configure --prefix=/usr/local && make && make install
+	@rm -rf Python-3.9.10.tgz Python-3.9.10
 
 check-poetry:
-	@command -v $(POETRY) >/dev/null 2>&1 || (echo "Poetry no está instalado. Instalando..."; $(MAKE) install-poetry)
+	@command -v poetry >/dev/null 2>&1 || (echo "Poetry no está instalado. Instalando..."; $(MAKE) install-poetry)
 
 install-poetry: check-python
 	@echo "Instalando Poetry..."
-	@curl -sSL https://install.python-poetry.org | $(PYTHON) -
+	@curl -sSL https://install.python-poetry.org | python3 -
 
 install-dependencies: 
-	$(POETRY) install
+	poetry install
 
 install: check-python check-poetry install-dependencies
 
@@ -25,5 +24,5 @@ check:
 	@echo "Verificando la sintaxis de los archivos .py en horarios_automatricula..."
 	@find horarios_automatricula -name "*.py" | while read file; do \
 		echo "Verificando $$file..."; \
-		$(PYTHON) -m py_compile $$file && echo "Sintaxis correcta en $$file" || echo "Error de sintaxis en $$file"; \
+		python3 -m py_compile $$file && echo "Sintaxis correcta en $$file" || echo "Error de sintaxis en $$file"; \
 	done
