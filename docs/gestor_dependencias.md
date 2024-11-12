@@ -6,25 +6,19 @@ Si buscamos información en páginas web como [esta](https://www.reddit.com/r/le
 
 Por ello se elegirá un gestor que sea compatible con el mismo. Algunas de las opciones más comunes son:
 
-### 1. pip
-* Gestor de paquetes de Python y viene preinstalado con la mayoría de las instalaciones de Python.
-* pip sólamente soporta parcialmente pyproject.toml, ya que reconoce este archivo gracias a la PEP 518 (que define pyproject.toml para definir configuraciones de construcción de paquetes). Sin embargo, pip no maneja las dependencias directamente desde pyproject.toml sin ayuda adicional
-
-### 2. Poetry
+### 1. Poetry
 * Poetry es un gestor de dependencias y un manejador de entornos que permite gestionar dependencias, versiones de Python y la publicación de paquetes. Es popular en proyectos modernos que necesitan un control más preciso de las versiones de los paquetes.
 * Ofrece un archivo de configuración más completo (pyproject.toml), controla las versiones de paquetes de manera automática y facilita la creación y administración de entornos virtuales.
 
-### 3. Hatch
+### 2. Hatch
 * Hatch es una herramienta de gestión de proyectos para Python que permite administrar tanto dependencias como entornos virtuales, además de soportar un flujo de trabajo basado en pyproject.toml
 * Compatible con pyproject.toml y diseñado para proyectos que requieren configuraciones avanzadas, Hatch ofrece control preciso sobre la configuración de los entornos virtuales y el manejo de versiones de paquetes, lo que resulta útil en entornos de desarrollo colaborativos y complejos.
 
-### 4. Flit
+### 3. Flit
 * Flit es una herramienta ligera diseñada principalmente para la creación y publicación de paquetes de Python. No es tan completa como Poetry en términos de gestión de dependencias y entornos, pero se integra fácilmente con pyproject.toml para proyectos simples y bibliotecas.
 * Se integra fácilmente con pyproject.toml y es ideal para proyectos simples, aunque carece de funciones avanzadas para manejar entornos o versiones de dependencias, lo que limita su uso en proyectos complejos.
 
 ## Elección
-Descartaremos pip al no soportar toalmente pyproject.toml.
-
 También descartaremos Hatch por los siguientes motivos:  
 * Manejo de dependencias: Hatch no ofrece un sistema de bloqueo de versiones tan avanzado como Poetry, lo que complica la creación de entornos reproducibles.
 * Hatch es más adecuado para configuraciones avanzadas, pero Poetry y Flit cubren mejor proyectos sencillos o medianos con menos complicación.
