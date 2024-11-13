@@ -3,10 +3,10 @@ check-python:
 
 install-python:
 	@echo "Instalando Python..."
-	@wget https://www.python.org/ftp/python/3.9.10/Python-3.9.10.tgz
-	@tar -xzf Python-3.9.10.tgz
-	@cd Python-3.9.10 && ./configure --prefix=/usr/local && make && make install
-	@rm -rf Python-3.9.10.tgz Python-3.9.10
+	@wget https://www.python.org/ftp/python/3.13.0/Python-3.13.0.tgz
+	@tar -xzf Python-3.13.0.tgz
+	@cd Python-3.13.0 && ./configure --prefix=/usr/local && make && make install
+	@rm -rf Python-3.13.0.tgz Python-3.13.0
 
 check-poetry:
 	@command -v poetry >/dev/null 2>&1 || (echo "Poetry no está instalado. Instalando..."; $(MAKE) install-poetry)
