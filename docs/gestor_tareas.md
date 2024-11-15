@@ -1,6 +1,12 @@
 # Gestor de tareas
 En este caso al estar trabajando en Python, la herramienta de construcción que estamos usando como [gestor de dependencias](./gestor_dependencias.md) lo podemos usar para automatizar ciertas tareas, en este caso queremos automatizar la instalación de las dependencias, que es capaz de realizar apoyándose en el archivo [pyproject.toml](../pyproject.toml). 
 
+Para elegit un gestor consideraremos los siguientes requisitos:
+* Descartaremos cualquier opción que dependa de conocer la interfaz de Python, así como el nombre de cada función, añadiendo más trabajo al usuario
+* Cualquier herramienta que se enfoque en algún tipo de tareas, como las pruebas o administración de servidores, pero no soporte otro tipo como instalación tampoco será considerada.
+* Aquellas que se centren más en la eficiencia y velocidad para lenguajes compilados también serán omitidas, al estar trabajando sobre Python, lenguaje interpretado.
+* Se valorará mucho la elección de una herramienta que no aumente la complejidad del proyecto, al ser inncesario en este caso.
+
 ## Automatización de tareas
 Usar Makefile para ejecuar herramientas en Python es una práctica común, especialmente en proyectos en los que se requieren múltiples tareas repetitivas, como puedens ser pruebas. 
 
@@ -18,10 +24,11 @@ No la usaremos ya que, como se ha comentado, su enfoque está más centrado en l
 ### 4. Fabric
 [Fabric](https://github.com/fabric/fabric) es una herramienta para automatizar tareas remotas, especialmente diseñada para desplegar aplicaciones o ejecutar comandos en servidores remotos. Fabric 1.x es bastante popular, pero la versión 2.x se ha reescrito con nuevas características y un enfoque más flexible. Facilita la creación de scripts para tareas de automatización de infraestructura.  
 Se centra más en la administración de sistemas y servidores remotos, por lo que no es tan común en tareas de desarrollo local o automatización de pruebas.  
-Fabric no es tan común ni está tan destinada como algunas de las ya mencionadas para automatizar tareas dentro de proyectos Python de desarrollo diario (como pruebas o compilación), por ello la descartaremos.
+Fabric no es tan común ni está tan destinada para automatizar tareas dentro de desarrollo diario como algunas de las opciones ya mencionadas (como pruebas o compilación), por ello la descartaremos.
 ### 6. Ninja
 [Ninja](https://github.com/ninja-build/ninja) es una herramienta de construcción que, como Make, se basa en archivos de configuración (build.ninja) para definir reglas y dependencias. A diferencia de Make, Ninja fue diseñada para ser extremadamente rápida y eficiente, especialmente en proyectos con grandes volúmenes de archivos y compilaciones complejas.  
 Es ampliamente utilizada en entornos donde la velocidad de compilación es crítica, como en la construcción de navegadores y sistemas operativos. Ninja se enfoca únicamente en la construcción, delegando la generación de archivos de configuración a otras herramientas como CMake, lo que facilita su integración en flujos de trabajo avanzados.
+Está diseñado principalmente para la construcción de proyectos grandes y complejos en lenguajes compilados, como C y C++. Su enfoque está en la eficiencia y la velocidad en la compilación incremental, lo cual no es tan relevante en Python, un lenguaje interpretado donde la compilación no es un paso central. 
 ### 7. Taskfile(Task)
 [Task](https://github.com/go-task/task) es una herramienta de automatización simple y flexible que utiliza un archivo Taskfile.yml para definir tareas y flujos de trabajo. Su sintaxis basada en YAML facilita la lectura y el mantenimiento de scripts de automatización, y permite definir tareas de manera modular, con soporte para variables y dependencias entre tareas.  
 Task es compatible con múltiples lenguajes y plataformas, lo que la convierte en una opción versátil tanto para desarrolladores individuales como para equipos que buscan simplificar tareas repetitivas, como la ejecución de pruebas.
