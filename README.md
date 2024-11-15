@@ -10,12 +10,6 @@ Las elecciones sobre el [gestor de dependencias](./docs/gestor_dependencias.md) 
 # Tareas automatizadas
 Se puede consultar el fichero [iv.yaml](./iv.yaml) para consultar el  de fichero que se usa para automatizar tareas y la orden necesaria para ejecutarlo.
 
-## Instalación
-Si queremos instalar todo lo necesario para ejecutar el programa debemos instalar Python, Poetry así como las dependencias necesarias, para ello debemos ejecutar, según las claves de [iv.yaml](./iv.yaml) "sudo orden install", que en nuestro caso sería:
-```bash
-sudo make install
-```
-
 ## Comprobar sintaxis del proyecto
 Si se quiere comprobar la sintaxis del proyecto se debe ejecutar según las claves de [iv.yaml](./iv.yaml) "orden check", que en nuestro caso sería: 
 ```bash
