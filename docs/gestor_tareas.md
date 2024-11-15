@@ -4,7 +4,6 @@ En este caso al estar trabajando en Python, la herramienta de construcción que 
 Para elegit un gestor consideraremos los siguientes requisitos:
 * Descartaremos cualquier opción que dependa de conocer la interfaz de Python, así como el nombre de cada función, añadiendo más trabajo al usuario
 * Cualquier herramienta que se enfoque en algún tipo de tareas, como las pruebas o administración de servidores, pero no soporte otro tipo como instalación tampoco será considerada.
-* Aquellas que se centren más en la eficiencia y velocidad para lenguajes compilados también serán omitidas, al estar trabajando sobre Python, lenguaje interpretado.
 * Se valorará mucho la elección de una herramienta que no aumente la complejidad del proyecto, al ser inncesario en este caso.
 
 ## Automatización de tareas
@@ -28,7 +27,7 @@ Fabric no es tan común ni está tan destinada para automatizar tareas dentro de
 ### 6. Ninja
 [Ninja](https://github.com/ninja-build/ninja) es una herramienta de construcción que, como Make, se basa en archivos de configuración (build.ninja) para definir reglas y dependencias. A diferencia de Make, Ninja fue diseñada para ser extremadamente rápida y eficiente, especialmente en proyectos con grandes volúmenes de archivos y compilaciones complejas.  
 Es ampliamente utilizada en entornos donde la velocidad de compilación es crítica, como en la construcción de navegadores y sistemas operativos. Ninja se enfoca únicamente en la construcción, delegando la generación de archivos de configuración a otras herramientas como CMake, lo que facilita su integración en flujos de trabajo avanzados.
-Está diseñado principalmente para la construcción de proyectos grandes y complejos en lenguajes compilados, como C y C++. Su enfoque está en la eficiencia y la velocidad en la compilación incremental, lo cual no es tan relevante en Python, un lenguaje interpretado donde la compilación no es un paso central. 
+Está diseñado principalmente para la construcción de proyectos grandes. Como ya se ha dicho, nuestro proyecto no será a gran escala, por ello lo descartaremos.
 ### 7. Taskfile(Task)
 [Task](https://github.com/go-task/task) es una herramienta de automatización simple y flexible que utiliza un archivo Taskfile.yml para definir tareas y flujos de trabajo. Su sintaxis basada en YAML facilita la lectura y el mantenimiento de scripts de automatización, y permite definir tareas de manera modular, con soporte para variables y dependencias entre tareas.  
 Task es compatible con múltiples lenguajes y plataformas, lo que la convierte en una opción versátil tanto para desarrolladores individuales como para equipos que buscan simplificar tareas repetitivas, como la ejecución de pruebas.
