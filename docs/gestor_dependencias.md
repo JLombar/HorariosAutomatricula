@@ -5,8 +5,7 @@ pyproject.toml se eligió ya que, como se menciona en el [Milestone 0](https://g
 Si buscamos información en páginas web como [esta](https://www.reddit.com/r/learnpython/comments/yqq551/pyprojecttoml_setupcfg_setuppy_whats_the/) o [esta](https://ericmjl.github.io/blog/2023/8/31/whats-the-difference-between-setupcfg-pyprojecttoml-and-setuppy/), en las que explica que desde el PEP 517 y 518 (El PEP es una Propuesta de Mejora de Python (Python Enhancement Proposal)) se llega al acuerdo de usar pyproject.toml como opción a la hora de configurar las builds en Python y, a no ser que exista un motivo de importancia, se debe evitar usar otros tipos de archivos de configuración en Python. Por ello, algo imprescindible a la hora de elegir un gestor de dependencias, debemos usar uno que sea compatible con pyproject.toml
 Requisitos de la herramienta: 
 * Compatible con pyproject.toml
-* Algo que también será importante a la hora de considerar la elección será utilizar un gestor de dependencias para proyectos más pequeños o simples, al ser innecesario ya que nuestro proyecto no será a gran escala.  
-* Otro motivo importante será elegir un gestor que cree un entorno virtual automáticamente, aislando las dependencias, evitando conflictos con otras instalaciones globales o proyectos, además de asegurar que las dependencias se instalen en un entorno controlado.
+* Algo que también será importante a la hora de considerar la elección será utilizar un gestor de dependencias para proyectos más pequeños o simples, al ser innecesario ya que nuestro proyecto no será a gran escala.
 * Se valorará que se genere un archivo .lock, garantizando  que todos los desarrolladores estén usando las mismas versiones exactas de las dependencias,
 * En última instancia se valorará velocidad y rendimiento del gestor.
 
