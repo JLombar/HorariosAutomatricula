@@ -13,3 +13,6 @@ check:
 		echo "Verificando $$file..."; \
 		python -m py_compile $$file && echo "Sintaxis correcta en $$file" || echo "Error de sintaxis en $$file"; \
 	done
+
+test:
+	uv run pytest
