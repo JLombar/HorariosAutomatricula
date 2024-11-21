@@ -3,3 +3,4 @@ entidad: horarios_automatricula/grupo.py
 automatizar:
   fichero: Makefile
   orden: make
+test: tests/test_leer_asignaturas.py
