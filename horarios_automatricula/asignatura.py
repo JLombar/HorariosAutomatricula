@@ -18,5 +18,7 @@ def leer_asignaturas(archivo):
         return asignaturas
     except FileNotFoundError:
         print("No se ha encontrado el archivo en la ruta correcta.")
+        return None
     except Exception as e:
         print(f"Error al leer el archivo: {e}")
+        return None

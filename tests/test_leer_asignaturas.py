@@ -16,3 +16,10 @@ def test_leer_asignaturas(tmp_path):
         "Infraestructura Virtual - Grupo B - Miércoles 12:00",
     ]
     assert resultado == esperado, "La función leer_asignaturas no leyó el contenido correctamente"
+
+def test_archivo_no_encontrado():
+    archivo_inexistente = "archivo_no_existe.txt"
+    
+    resultado = leer_asignaturas(archivo_inexistente)
+    
+    assert resultado is None, f"Se esperaba None al no existir el archivo, pero se obtuvo {resultado}"
