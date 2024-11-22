@@ -1,0 +1,63 @@
+1er Curso (Primer Año)
+
+Asignatura                                | Grupo | Lunes       | Martes      | Miércoles   | Jueves     | Viernes    
+---------------------------------------------------------------------------------------------------------
+Cálculo I                                  | A     | 9:00-11:00  |             | 9:00-11:00  |            | 9:00-11:00 
+Fundamentos de Programación                | B     | 11:30-13:30 | 11:30-13:30 |             | 11:30-13:30|            
+Álgebra Lineal                             | A     | 16:00-18:00 |             | 16:00-18:00 |            |            
+Física I                                   | B     | 9:00-11:00  |             | 9:00-11:00  |            |            
+Organización de Computadores               | A     |             | 9:00-11:00  | 9:00-11:00  |            | 11:30-13:30
+Estructuras de Datos                       | B     | 11:30-13:30 |             |             | 11:30-13:30|            
+Lógica y Lenguajes Formales                | A     | 16:00-18:00 |             |             |            | 16:00-18:00
+Sistemas Operativos I                      | B     | 11:30-13:30 |             |             | 11:30-13:30|            
+Introducción a la Ingeniería               | A     | 11:30-13:30 |             |             |            |            
+Física II                                  | A     |             | 9:00-11:00  |             | 9:00-11:00 |            
+Lenguajes de Descripción de Hardware       | A     | 16:00-18:00 |             |             |            |            
+
+---------------------------------------------------------------------------------------------------------
+2do Curso (Segundo Año)
+
+Asignatura                                | Grupo | Lunes       | Martes      | Miércoles   | Jueves     | Viernes    
+---------------------------------------------------------------------------------------------------------
+Cálculo II                                 | A     | 9:00-11:00  |             | 9:00-11:00  |            | 9:00-11:00 
+Algoritmos y Estructuras Avanzadas         | A     | 11:30-13:30 | 11:30-13:30 |             | 11:30-13:30|            
+Arquitectura de Computadores               | B     | 16:00-18:00 |             | 16:00-18:00 |            |            
+Programación Orientada a Objetos           | A     | 9:00-11:00  |             | 9:00-11:00  |            | 9:00-11:00 
+Redes de Computadores                      | B     |             | 9:00-11:00  |             | 9:00-11:00 |            
+Bases de Datos                             | A     | 11:30-13:30 |             |             | 11:30-13:30|            
+Teoría de la Computación                   | B     | 16:00-18:00 |             |             |            |            
+Sistemas Distribuidos                      | A     |             | 9:00-11:00  |             | 9:00-11:00 |            
+Electrónica Digital                        | B     | 11:30-13:30 |             |             | 11:30-13:30|            
+Ingeniería de Software                     | A     | 16:00-18:00 |             |             |            |            
+
+---------------------------------------------------------------------------------------------------------
+3er Curso (Tercer Año)
+
+Asignatura                                | Grupo | Lunes       | Martes      | Miércoles   | Jueves     | Viernes    
+---------------------------------------------------------------------------------------------------------
+Programación Concurrente                   | A     | 9:00-11:00  |             | 9:00-11:00  |            | 9:00-11:00 
+Sistemas Operativos II                     | B     | 11:30-13:30 | 11:30-13:30 |             | 11:30-13:30|            
+Compiladores                               | A     | 16:00-18:00 |             | 16:00-18:00 |            |            
+Inteligencia Artificial                    | B     | 9:00-11:00  |             | 9:00-11:00  |            | 9:00-11:00 
+Redes Avanzadas                            | A     |             | 9:00-11:00  |             | 9:00-11:00 |            
+Seguridad Informática                      | B     | 11:30-13:30 |             |             | 11:30-13:30|            
+Teoría de Lenguajes                        | A     | 16:00-18:00 |             |             |            |            
+Redes Neuronales                           | A     |             | 9:00-11:00  |             | 9:00-11:00 |            
+Sistemas de Información                    | B     | 11:30-13:30 |             |             | 11:30-13:30|            
+Computación Gráfica                        | A     | 16:00-18:00 |             |             |            |            
+
+---------------------------------------------------------------------------------------------------------
+4to Curso (Cuarto Año)
+
+Asignatura                                | Grupo | Lunes       | Martes      | Miércoles   | Jueves     | Viernes    
+---------------------------------------------------------------------------------------------------------
+Prácticas Profesionales                    | A     | 9:00-11:00  |             | 9:00-11:00  |            | 9:00-11:00 
+Proyecto Final                             | B     | 11:30-13:30 | 11:30-13:30 |             | 11:30-13:30|            
+Minería de Datos                           | A     | 16:00-18:00 |             | 16:00-18:00 |            |            
+Desarrollo de Videojuegos                  | B     | 9:00-11:00  |             | 9:00-11:00  |            | 9:00-11:00 
+Cloud Computing                            | A     |             | 9:00-11:00  |             | 9:00-11:00 |            
+Gestión de Proyectos                       | B     | 11:30-13:30 |             |             | 11:30-13:30|            
+Redes de Comunicación                      | A     | 16:00-18:00 |             |             |            |            
+Realidad Aumentada                         | B     |             | 9:00-11:00  |             | 9:00-11:00 |            
+Desarrollo Web                             | A     | 11:30-13:30 |             |             | 11:30-13:30|            
+Redes Neuronales y Aprendizaje Automático  | B     | 16:00-18:00 |             |             |            |            
