@@ -5,7 +5,7 @@ def convertir_a_minutos(hora_str):
         hora = datetime.strptime(hora_str, "%H:%M")
         return hora.hour * 60 + hora.minute
     except ValueError:
-        return None
+        raise ValueError
 
 def comparar_horarios(asignatura1, asignatura2):
     for grupo1 in asignatura1.grupos:
@@ -19,5 +19,5 @@ def comparar_horarios(asignatura1, asignatura2):
                         hora_fin2 = convertir_a_minutos(horario2.hora_fin)
                         
                         if hora_inicio1 < hora_fin2 and hora_fin1 > hora_inicio2:
-                            return False  
+                            raise ValueError  
     return True
