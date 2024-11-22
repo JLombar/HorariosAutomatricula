@@ -5,7 +5,7 @@ Algunos prerrequisitos a la hora de elegir las bibliotecas:
 * Que sea compatible con Python.
 * Debe tener una buena puntuación en [snyk Advisor](https://snyk.io/advisor/) o [PyPi](https://pypi.org/).
 * Se deberá tener en cuenta la comunidad de la que dispone, ya que se busca tener un buen mantenimiento y actualización, disminuyendo la deuda técnica.
-* En última instancia se valorará aquella herramienta que pueda ser usada como test runner.
+* En última instancia se valorará aquella herramienta que incluya una mayor variedad de aserciones, permitiéndonos mayor variedad a la hora de realizar diferentes tests.
 ## Elección
 Estas son algunas de las bibliotecas de aserciones más comunes
 ### 1. unittest (PyUnit)
@@ -19,4 +19,4 @@ behave es una herramienta para pruebas basadas en Behavior-Driven Development (B
 El problema que tiene behave es que si miramos sus calificanciones con [snyk Advisor](https://snyk.io/advisor/python/behave) o el proyecto en [PyPi](https://pypi.org/project/behave/), lleva sin actualizarse siete años, podemos asumir que no tiene soporte, por lo cual lo descartaremos.
 
 ## pytest vs unittest
-Entre pytest y unittest será preferible usar [pytest](https://github.com/pytest-dev/pytest) ya que nos permite usarlo como test runner, evitando elegir otra herramienta a la hora de considerar un runner, puedo realizar todo con sólamente pytest.
+Entre pytest y unittest será preferible usar [pytest](https://github.com/pytest-dev/pytest) ya que incluye las mismas aserciones que unittest, más unas cuantas que son añadidas por la misma biblioteca, permitiendo mayor flexiblidad a la hora de elaborar los tests.
