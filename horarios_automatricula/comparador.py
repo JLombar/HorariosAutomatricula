@@ -19,4 +19,5 @@ def comparar_horarios(asignatura1, asignatura2):
                         hora_fin2 = convertir_a_minutos(horario2.hora_fin)
                         
                         if hora_inicio1 < hora_fin2 and hora_fin1 > hora_inicio2:
-    return False  
+                            return False  
+    return True
