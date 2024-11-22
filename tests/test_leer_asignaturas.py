@@ -23,3 +23,10 @@ def test_archivo_no_encontrado():
     resultado = leer_asignaturas(archivo_inexistente)
     
     assert resultado is None, f"Se esperaba None al no existir el archivo, pero se obtuvo {resultado}"
+
+def test_archivo_vacio(tmp_path):
+    archivo_vacio = tmp_path / "archivo_vacio.txt"
+    archivo_vacio.write_text("", encoding='utf-8')  # Crear un archivo vacío
+
+    with pytest.raises(ValueError, match="El archivo está vacío."):
+        leer_asignaturas(archivo_vacio)
