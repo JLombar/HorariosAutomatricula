@@ -1,11 +1,5 @@
 # Bibliotecas de aserciones
-Una bibliotecva de aserciones es un conjunto de herramientas o funcinoes que los desarrolladores utilizan para comprobar el funcionamiento del código. Permiten realizar pruebas unitarias para verificar que una aplicación cumple con las expectativas, además de evitar que cambios en un futuro produzcan errores.  
-Las aserciones son declaraciones que verifican si una condición específica es verdadera. La biblioteca de aderciones proporciona funciones para realizar las verficaciones.
-Estas bibliotecas de aserciones van más allá y permiten:
-* Escribir y organizar pruebas
-* Ejecutar las pruebas sistemáticamente
-* Reportar resultados
-* Aislar las pruebas
+Una biblioteca de aserciones es un conjunto de herramientas o funcinoes que los desarrolladores utilizan para comprobar el funcionamiento del código. Permiten realizar pruebas unitarias para verificar que una aplicación cumple con las expectativas, además de evitar que cambios en un futuro produzcan errores.  
 
 Algunos prerrequisitos a la hora de elegir las bibliotecas:
 * Que sea compatible con Python.
