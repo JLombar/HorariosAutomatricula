@@ -12,7 +12,6 @@ Lógica y Lenguajes Formales                | A     | 16:00-18:00 |             
 Sistemas Operativos I                      | B     | 11:30-13:30 |             |             | 11:30-13:30|            
 Introducción a la Ingeniería               | A     | 11:30-13:30 |             |             |            |            
 Física II                                  | A     |             | 9:00-11:00  |             | 9:00-11:00 |            
-Lenguajes de Descripción de Hardware       | A     | 16:00-18:00 |             |             |            |            
 
 ---------------------------------------------------------------------------------------------------------
 2do Curso (Segundo Año)
