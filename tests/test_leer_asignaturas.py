@@ -20,13 +20,12 @@ def test_leer_asignaturas(tmp_path):
 def test_archivo_no_encontrado():
     archivo_inexistente = "archivo_no_existe.txt"
     
-    resultado = leer_asignaturas(archivo_inexistente)
-    
-    assert resultado is None, f"Se esperaba None al no existir el archivo, pero se obtuvo {resultado}"
+    with pytest.raises(ValueError, match="No se ha encontrado el archivo en la ruta correcta."):
+        leer_asignaturas(archivo_inexistente)
 
 def test_archivo_vacio(tmp_path):
     archivo_vacio = tmp_path / "archivo_vacio.txt"
-    archivo_vacio.write_text("", encoding='utf-8')  # Crear un archivo vacío
+    archivo_vacio.write_text("", encoding='utf-8') 
 
     with pytest.raises(ValueError, match="El archivo está vacío."):
         leer_asignaturas(archivo_vacio)

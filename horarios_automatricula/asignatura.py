@@ -16,14 +16,13 @@ def leer_asignaturas(archivo):
             for linea in f:
                 asignaturas.append(linea.strip())
         
-        if not asignaturas:
+        if not asignaturas:  
             raise ValueError("El archivo está vacío.")
         
         return asignaturas
     except FileNotFoundError:
-        print("No se ha encontrado el archivo en la ruta correcta.")
-        return None
+        raise ValueError("No se ha encontrado el archivo en la ruta correcta.")  # Lanzar ValueError
     except Exception as e:
-        if not isinstance(e, ValueError):  
+        if not isinstance(e, ValueError): 
             print(f"Error al leer el archivo: {e}")
         raise  
