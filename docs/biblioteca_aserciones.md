@@ -3,13 +3,13 @@ Una biblioteca de aserciones es un conjunto de herramientas o funcinoes que los 
 
 Algunos prerrequisitos a la hora de elegir las bibliotecas:
 * Debe tener una buena puntuación en [snyk Advisor](https://snyk.io/advisor/). Tener una buena puntuación en Skyk Advisor implica que la herramienta cumple con altos estándares en áreas como seguridad de datos y gestión de riesgos, demostrando ser una buena herramienta destinada a usar en un repositorio/repositorio
-* Se debe comprobar que se actualize con frecuencia en [PyPi](https://pypi.org/). De esta forma se tendrá en cuenta el buen mantenimiento y actualización, disminuyendo la deuda técnica.
+* Se debe comprobar el buen mantenimiento y actualización, disminuyendo la deuda técnica. Para comprobar esto, podemos ayudarnos de [PyPi](https://pypi.org/) para herramientas no nativas de Python, comprobando cuando fue la última actualización del paquete.
 * En última instancia se valorará aquella herramienta que incluya una mayor variedad de aserciones, permitiéndonos mayor variedad a la hora de realizar diferentes tests.
 ## Elección
 Estas son algunas de las bibliotecas de aserciones más comunes
 ### 1. unittest (PyUnit)
 unittest es una biblioteca estándar de Python diseñada para realizar pruebas automatizadas. Es especialmente útil para validar el comportamiento de código mediante aserciones.  
-unittest tiene soporte, y dado que es parte de la biblioteca estándar de Python, está mantenido oficialmente y es confiable para escribir y ejecutar pruebas.
+unittest tiene soporte, y dado que es parte de la biblioteca estándar de Python, está mantenido oficialmente junto con las actualizaciones de Python.
 ### 2. pytest
 pytest es una biblioteca de pruebas para Python que ofrece una manera más flexible y moderna de realizar pruebas automatizadas, incluyendo un potente conjunto de aserciones que no se encuentran disponibles en Python  
 Tiene una gran puntuación en [snyk Advisor](https://snyk.io/advisor/python/pytest), por lo que será una buena herramienta a considerar ya que a esto se le suma que su última versión es de hace sólo 2 meses, por lo que podemos supones que tienen soporte activo y recibe actualizaciones.
