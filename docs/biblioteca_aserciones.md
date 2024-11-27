@@ -7,17 +7,31 @@ Algunos prerrequisitos a la hora de elegir las bibliotecas:
 * En última instancia se valorará aquella herramienta que incluya una mayor variedad de aserciones, permitiéndonos mayor variedad a la hora de realizar diferentes tests.
 ## Elección
 Estas son algunas de las bibliotecas de aserciones más comunes
-### 1. unittest (PyUnit)
+### 1. assert
+Es una herramienta que viene por defecto en Python que se usa para realizar comprobaciones durante la ejecucuón de un programa. Al ser parte del núcleo de Python está mantenido oficialmente junto con las actualizaciones de Python. Assert nos permite evaluar:
+* Supuestos lógicos
+* Tipos o estructuras
+* Valor dentro de un rango
+* Longitud de una estructura
+* Relaciones entre valores
+* Comprobación de estados o configuraciones específicas
+### 2. unittest (PyUnit)
 unittest es una biblioteca estándar de Python diseñada para realizar pruebas automatizadas. Es especialmente útil para validar el comportamiento de código mediante aserciones.  
-unittest tiene soporte, y dado que es parte de la biblioteca estándar de Python, está mantenido oficialmente junto con las actualizaciones de Python.
-### 2. pytest
+unittest tiene soporte, y dado que es parte de la biblioteca estándar de Python, está mantenido oficialmente junto con las actualizaciones de Python. Incluye estas aserciones:
+* assertEqual, assertNotEqual: Para comprobar igualdad o desigualdad
+* assertIs, assertIsNot: Para comprobar la indentidad
+* assertTrue, assertFalse: Comprueba veracidad/falsedad
+* assertGreater, assertLess, etc: Realiza comparaciones de valores
+* assertRaises, assertRaisesRegex: Para verificar excepciones
+* assertListEqual, assertDictEqual, etc: Verifican estructuras de datos
+### 3. pytest
 Tiene una gran puntuación en [snyk Advisor](https://snyk.io/advisor/python/pytest), por lo que será una buena herramienta a considerar ya que a esto se le suma que su última versión es de hace sólo 2 meses, por lo que podemos supones que tienen soporte activo y recibe actualizaciones.
-Pytest puede usar las típicas aserciones estándar de Python inclye las siguientes aserciones:
+Pytest puede usar las típicas aserciones estándar de Python, además de  incluir las siguientes aserciones:
 * pytest.raises: Sirve para verificar que una excepción específica es lanzada
 * pytest.warns: Para verificar que se lanza una advertencia
 * pytest.approx: Se usa para verificar la igualdad aproximada de valores flotantes
 
 Si se necesitan aserciones para para casos más específicas las podemos ampliar con plugins y extensiones a pytest.
 
-## pytest vs unittest
-Entre pytest y unittest será preferible usar [pytest](https://github.com/pytest-dev/pytest). Esto se debe a que pytest incluye las aserciones de unittest, al ser la biblioteca estándar de Python. De esta forma podemos usar las aserciones por defecto, así como algunas añadidas por pytest como pytest.raises, verificando que se lanzan excepciones específicas durante la ejecución de un test. De esta forma se permite mayor flexiblidad a la hora de elaborar los tests.
+## Elección final
+Entre assert, pytest y unittest será preferible usar [pytest](https://github.com/pytest-dev/pytest). Esto se debe a que pytest incluye las aserciones de unittest y assert, al ser parte del estándar de Python. De esta forma podemos usar las aserciones por defecto, así como algunas añadidas por pytest como pytest.warns, verificando que se lanzan advertencias específicas durante la ejecución de un test. De esta forma se permite mayor flexiblidad a la hora de elaborar los tests.
