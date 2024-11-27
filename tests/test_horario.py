@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, mock_open
-from horarios_automatricula.parser import Parser
+from horarios_automatricula.matricula import parse_horario
 from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
@@ -11,16 +11,14 @@ from io import StringIO
 from unittest.mock import patch
 
 def test_archivo_no_existente():
-    parser = Parser("archivo_inexistente.txt")
     with pytest.raises(ValueError):
-        parser.parse_horario()
+        parse_horario("archivo_inexistente.txt")
 
 def test_archivo_vacio():
     file_content = ""
     
     with patch("builtins.open", return_value=StringIO(file_content)):
-        parser = Parser("test_file.txt")
-        matricula = parser.parse_horario()
+        matricula = parse_horario("test_file.txt")
         
         assert len(matricula.asignaturas) == 0
 
@@ -31,8 +29,7 @@ def test_parse_horario_correcto():
         file_content = file.read()
     
     with patch("builtins.open", return_value=StringIO(file_content)):
-        parser = Parser(file_path)
-        matricula = parser.parse_horario()
+        matricula = parse_horario(file_path)
     
         assert len(matricula.asignaturas) == 40
         
