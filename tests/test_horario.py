@@ -5,8 +5,8 @@ from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
 from horarios_automatricula.matricula import Matricula
-from horarios_automatricula.comparador import comparar_horarios
-from horarios_automatricula.comparador import convertir_a_minutos
+from horarios_automatricula.asignatura import comparar_horarios
+from horarios_automatricula.asignatura import convertir_a_minutos
 from io import StringIO
 from unittest.mock import patch
 
