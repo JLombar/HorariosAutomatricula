@@ -13,6 +13,12 @@ unittest tiene soporte, y dado que es parte de la biblioteca estándar de Python
 ### 2. pytest
 pytest es una biblioteca de pruebas para Python que ofrece una manera más flexible y moderna de realizar pruebas automatizadas.
 Tiene una gran puntuación en [snyk Advisor](https://snyk.io/advisor/python/pytest), por lo que será una buena herramienta a considerar ya que a esto se le suma que su última versión es de hace sólo 2 meses, por lo que podemos supones que tienen soporte activo y recibe actualizaciones.
+Pytest puede usar las típicas aserciones estándar de Python inclye las siguientes aserciones:
+* pytest.raises: Sirve para verificar que una excepción específica es lanzada
+* pytest.warns: Para verificar que se lanza una advertencia
+* pytest.approx: Se usa para verificar la igualdad aproximada de valores flotantes
+
+Si se necesitan aserciones para para casos más específicas las podemos ampliar con plugins y extensiones a pytest.
 
 ## pytest vs unittest
 Entre pytest y unittest será preferible usar [pytest](https://github.com/pytest-dev/pytest). Esto se debe a que pytest incluye las aserciones de unittest, al ser la biblioteca estándar de Python. De esta forma podemos usar las aserciones por defecto, así como algunas añadidas por pytest como pytest.raises, verificando que se lanzan excepciones específicas durante la ejecución de un test. De esta forma se permite mayor flexiblidad a la hora de elaborar los tests.
