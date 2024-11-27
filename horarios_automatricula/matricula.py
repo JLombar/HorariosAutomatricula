@@ -1,4 +1,6 @@
 from .asignatura import Asignatura_Grupos
+from .horario import Horario
+from .grupo import Grupo
 import re
 
 class Matricula:
@@ -6,7 +8,7 @@ class Matricula:
         for asignatura in asignaturas:
             if not isinstance(asignatura, Asignatura_Grupos):
                 raise TypeError("Cada asignatura debe instancia de la clase Asignatura_Grupos")
-        
+            
         self.asignaturas = asignaturas
 
 def parse_horario(file_path):
