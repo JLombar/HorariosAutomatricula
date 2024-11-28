@@ -16,8 +16,6 @@ Es el módulo estándar de Python para escribir y ejecutar pruebas unitarias, si
 Nose (o nose2) es un framework de pruebas y un test runner para Python, que se utiliza para realizar pruebas unitarias y de integración. Es una extensión de unittest, el framework de pruebas estándar de Python, pero con características adicionales que lo hacen más fácil de usar y más flexible.
 Nose genera informes detallados sobre los resultados de las pruebas, lo que te permite identificar rápidamente qué pruebas han pasado, fallado o se han saltado.
 El único problema es que su puntuación en [snyk Advisor](https://snyk.io/advisor/python/nose) es muy baja, por lo que será descartado.
-### 4. pytest-bdd
-pytest-bdd es un plugin para pytest que permite escribir pruebas utilizando el enfoque de Behavior-Driven Development (BDD). BDD es una metodología de desarrollo de software que se enfoca en describir el comportamiento del sistema en un lenguaje que sea comprensible tanto para los desarrolladores como para los interesados no técnicos (por ejemplo, analistas de negocio, testers, etc.).
 
 ### pytest vs unittest
 pytest detevta las pruebas en cualquier archivo mientras siga el patrón test_*.py, sin neceidad de clases y métodos específicos, reduciendo la configuración inicial.
