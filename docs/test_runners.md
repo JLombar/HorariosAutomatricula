@@ -18,5 +18,5 @@ Nose genera informes detallados sobre los resultados de las pruebas, lo que te p
 El único problema es que su puntuación en [snyk Advisor](https://snyk.io/advisor/python/nose) es muy baja, por lo que será descartado.
 
 ### pytest vs unittest
-pytest detecta las pruebas en cualquier archivo mientras siga el patrón test_*.py, sin neceidad de clases y métodos específicos, reduciendo la configuración inicial.
-Si en un futuro se quieren usar dependencias en las pruebas para futuros Milestones, pytest ofrece un sistema de fixtures, inyectando dependencias en las pruebas de forma eficiente. En unittest, tendríamos que configurar todo esto manualmente usando métodos como setUp o tearDown, complicando el uso de la herramienta.
+pytest detecta las pruebas en cualquier archivo mientras siga el patrón test_*.py, sin necesidad de clases y métodos específicos, reduciendo la configuración inicial.
+Si en un futuro se quieren usar dependencias en las pruebas para futuros Milestones, pytest ofrece un sistema de fixtures, inyectando dependencias en las pruebas de forma eficiente. En unittest, tendríamos que configurar todo esto manualmente usando métodos como setUp o tearDown, complicando el uso de la herramienta, por lo que usaremos pytest, al ser una herramienta más fácil y cómoda de usar.
