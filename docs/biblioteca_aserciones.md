@@ -21,7 +21,7 @@ Es una biblioteca de aserciones para Python, al ver su perfil en [PyPi](https://
 ### 5. grappa
 Otra opción que podríamos contemplar a la hora de elegir una herramienta, pero tiene una baja puntuación en [synk Advisor](https://snyk.io/advisor/python/grappa) y la última versión se publicó hace 4 años.
 ### 6. PyHamcrest
-PyHarmCrest es otra opción, actualizada hace un año y un mes por última vez. El problema que tiene es que al igual que el resto tiene una baja valoación en lo que respecta a su seguridad, por lo que la podemos descartar.
+PyHarmCrest es otra opción, actualizada hace un año y un mes por última vez. El problema que tiene es que al igual que resto de herramientas descartadas tiene una baja valoración en [snyk Advisor](https://snyk.io/advisor/search?source=python&q=pyhamcrest), por lo que no la consideraremos.
 
 ## Elección final
 Como hemos visto en las opciones el ecosistema de Python están un limitadas ya que los usuarios se han limitado a usar pytest o unittest y el resto de opciones se han ido abandonado con el tiempo, perdiendo la posibilidad de elegir entre varias herramientas y "monopolizando" la desición.
