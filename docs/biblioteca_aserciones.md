@@ -3,7 +3,6 @@ Una biblioteca de aserciones es un conjunto de herramientas o funcinoes que los 
 
 Algunos prerrequisitos a la hora de elegir las bibliotecas:
 * Debe tener una buena puntuación en [snyk Advisor](https://snyk.io/advisor/). Tener una buena puntuación en Skyk Advisor implica que la herramienta cumple con altos estándares en áreas como seguridad de datos y gestión de riesgos, demostrando ser una buena herramienta destinada a usar en un repositorio.
-* Se debe comprobar el buen mantenimiento y actualización, disminuyendo la deuda técnica. Para comprobar esto, podemos ayudarnos de [PyPi](https://pypi.org/) o snyk Advisor, comprobando cuando fue la última actualización del paquete.
 * En última instancia se valorará aquella herramienta que incluya una mayor variedad de aserciones, permitiéndonos mayor variedad a la hora de realizar diferentes tests.
 ## Elección
 Estas son algunas de las bibliotecas de aserciones más comunes
