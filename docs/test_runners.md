@@ -15,7 +15,6 @@ Es el módulo estándar de Python para escribir y ejecutar pruebas unitarias, si
 
 ### 3. Nose
 Nose (o nose2) es un framework de pruebas y un test runner para Python, que se utiliza para realizar pruebas unitarias y de integración. Es una extensión de unittest, el framework de pruebas estándar de Python, pero con características adicionales que lo hacen más fácil de usar y más flexible.
-Nose genera informes detallados sobre los resultados de las pruebas, lo que te permite identificar rápidamente qué pruebas han pasado, fallado o se han saltado.
 El único problema es que su puntuación en [snyk Advisor](https://snyk.io/advisor/python/nose) es muy baja, por lo que será descartado.
 
 ### pytest vs unittest
