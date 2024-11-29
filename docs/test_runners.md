@@ -1,3 +1,4 @@
+# Test runners
 Elegir un test runner adecuado es crucial porque afecta directamente la eficiencia, la efectividad y la calidad del proceso de pruebas en un proyecto de software. Facilitando la automatización de las pruebas, así como poder agruparlas o incluir subtests.
 Prerrequisitos a la hora de elegir un test runner serán similares a los de la [biblioteca de aserciones](./biblioteca_aserciones.md):
 * Debe tener una buena puntuación en [snyk Advisor](https://snyk.io/advisor/). Tener una buena puntuación en Skyk Advisor implica que la herramienta cumple con altos estándares en áreas como seguridad de datos y gestión de riesgos, demostrando ser una buena herramienta destinada a usar en un repositorio/proyecto.
