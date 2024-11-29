@@ -9,20 +9,9 @@ Algunos prerrequisitos a la hora de elegir las bibliotecas:
 Estas son algunas de las bibliotecas de aserciones más comunes
 ### 1. unittest (PyUnit)
 unittest es una biblioteca estándar de Python diseñada para realizar pruebas automatizadas. Es especialmente útil para validar el comportamiento de código mediante aserciones.  
-unittest tiene soporte, y dado que es parte de la biblioteca estándar de Python, está mantenido oficialmente junto con las actualizaciones de Python. Incluye estas aserciones:
-* assertEqual, assertNotEqual: Para comprobar igualdad o desigualdad
-* assertIs, assertIsNot: Para comprobar la indentidad
-* assertTrue, assertFalse: Comprueba veracidad/falsedad
-* assertGreater, assertLess, etc: Realiza comparaciones de valores
-* assertRaises, assertRaisesRegex: Para verificar excepciones
-* assertListEqual, assertDictEqual, etc: Verifican estructuras de datos
+unittest tiene soporte, y dado que es parte de la biblioteca estándar de Python, está mantenido oficialmente junto con las actualizaciones de Python.
 ### 2. pytest
-Tiene una gran puntuación en [snyk Advisor](https://snyk.io/advisor/python/pytest), por lo que será una buena herramienta a considerar ya que a esto se le suma que su última versión es de hace sólo 2 meses, por lo que podemos supones que tienen soporte activo y recibe actualizaciones.
-Pytest puede usar las típicas aserciones estándar de Python, además de  incluir las siguientes aserciones:
-* pytest.raises: Sirve para verificar que una excepción específica es lanzada
-* pytest.warns: Para verificar que se lanza una advertencia
-* pytest.approx: Se usa para verificar la igualdad aproximada de valores flotantes
-
+Tiene una gran puntuación en [snyk Advisor](https://snyk.io/advisor/python/pytest), por lo que será una buena herramienta a considerar ya que a esto se le suma que su última versión es de hace sólo 2 meses, por lo que podemos supones que tienen soporte activo y recibe actualizaciones.  
 Si se necesitan aserciones para para casos más específicas las podemos ampliar con plugins y extensiones a pytest.
 ### 3. behave
 behave es una biblioteca de aserciones basadas en Behavior-Driven Development (BDD), una metodología que enfatiza la colaboración entre desarrolladores, testers y stakeholders mediante un lenguaje común. En lugar de centrarse en aserciones directas como unittest o pytest, behave utiliza un enfoque orientado a escenarios definidos en un lenguaje cercano al natural, lo que permite describir el comportamiento esperado del sistema.
