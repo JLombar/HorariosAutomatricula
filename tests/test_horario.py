@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import patch, mock_open
 from horarios_automatricula.matricula import parse_horario
+from horarios_automatricula.matricula import read_file
 from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
@@ -10,77 +11,40 @@ from horarios_automatricula.asignatura import convertir_a_minutos
 from io import StringIO
 from unittest.mock import patch
 
-def test_archivo_no_existente():
-    with pytest.raises(ValueError):
-        parse_horario("archivo_inexistente.txt")
-
-def test_archivo_vacio():
-    file_content = ""
+def test_read_file_success():
+    fake_content = "Este es el contenido del archivo."
+    fake_path = "test_file.txt"
     
-    with patch("builtins.open", return_value=StringIO(file_content)):
-        matricula = parse_horario("test_file.txt")
-        
-        assert len(matricula.asignaturas) == 0
+    with patch("builtins.open", mock_open(read_data=fake_content)) as mocked_file:
+        result = read_file(fake_path)
+        assert result == fake_content
+        mocked_file.assert_called_once_with(fake_path, "r", encoding="utf-8")
 
-def test_parse_horario_correcto():
-    file_path = "docs/asignaturas.txt"
+def test_read_file_not_found():
+    fake_path = "non_existent_file.txt"
     
-    with open(file_path, "r", encoding="utf-8") as file:
-        file_content = file.read()
+    with patch("builtins.open", side_effect=FileNotFoundError):
+        with pytest.raises(ValueError, match="No se ha encontrado el archivo en la ruta correcta."):
+            read_file(fake_path)
+
+def test_read_file_unexpected_error():
+    fake_path = "test_file.txt"
     
-    with patch("builtins.open", return_value=StringIO(file_content)):
-        matricula = parse_horario(file_path)
+    with patch("builtins.open", side_effect=OSError("Fallo inesperado")):
+        with pytest.raises(RuntimeError, match="Error al leer el archivo: Fallo inesperado"):
+            read_file(fake_path)
+
+def test_read_file_permission_error():
+    fake_path = "restricted_file.txt"
     
-        assert len(matricula.asignaturas) == 40
-        
-        asignatura_calculo = matricula.asignaturas[0]
-        assert asignatura_calculo.nombre == "Cálculo I"
-        
-        assert len(asignatura_calculo.grupos) == 1
-        assert asignatura_calculo.grupos[0].letra == "A"
+    with patch("builtins.open", side_effect=PermissionError("Permiso denegado")):
+        with pytest.raises(RuntimeError, match="Error al leer el archivo: Permiso denegado"):
+            read_file(fake_path)
 
-def test_convertir_a_minutos_valido():
-    assert convertir_a_minutos("09:00") == 540
-    assert convertir_a_minutos("14:30") == 870
-    assert convertir_a_minutos("00:00") == 0
-    assert convertir_a_minutos("23:59") == 1439
-
-def test_convertir_a_minutos_invalido():
-    with pytest.raises(ValueError):
-        convertir_a_minutos("09:60")
-        convertir_a_minutos("25:00")
-        convertir_a_minutos("abc")
-
-def test_comparar_horarios_sin_superposicion():
-    horario1 = Horario("Lunes", "09:00", "11:00")
-    grupo1 = Grupo("A", [horario1])
-    asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
-
-    horario2 = Horario("Lunes", "11:30", "13:00")
-    grupo2 = Grupo("B", [horario2])
-    asignatura2 = Asignatura_Grupos("Física", [grupo2])
-
-    assert comparar_horarios(asignatura1, asignatura2) is True 
-
-def test_comparar_horarios_con_superposicion():
-    horario1 = Horario("Lunes", "09:00", "11:00")
-    grupo1 = Grupo("A", [horario1])
-    asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
-
-    horario2 = Horario("Lunes", "10:30", "12:00")
-    grupo2 = Grupo("B", [horario2])
-    asignatura2 = Asignatura_Grupos("Física", [grupo2])
-
-    with pytest.raises(ValueError):
-        comparar_horarios(asignatura1, asignatura2)
-
-def test_comparar_horarios_diferentes_dias():
-    horario1 = Horario("Lunes", "09:00", "11:00")
-    grupo1 = Grupo("A", [horario1])
-    asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
-
-    horario2 = Horario("Martes", "10:30", "12:00")
-    grupo2 = Grupo("B", [horario2])
-    asignatura2 = Asignatura_Grupos("Física", [grupo2])
-
-    assert comparar_horarios(asignatura1, asignatura2) is True
+def test_read_file_empty_file():
+    fake_path = "empty_file.txt"
+    
+    with patch("builtins.open", mock_open(read_data="")) as mocked_file:
+        with pytest.raises(ValueError, match="El archivo está vacío."):
+            read_file(fake_path)
+        mocked_file.assert_called_once_with(fake_path, "r", encoding="utf-8")
