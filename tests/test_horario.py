@@ -3,6 +3,7 @@ from unittest.mock import patch, mock_open
 from horarios_automatricula.matricula import parse_horario
 from horarios_automatricula.matricula import read_file
 from horarios_automatricula.matricula import split_courses
+from horarios_automatricula.matricula import process_course
 from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
@@ -70,3 +71,77 @@ def test_split_courses_no_content():
     expected = [""]
     result = split_courses(content)
     assert result == expected
+
+def test_process_course_single_valid_row():
+    course_data = """1er Curso (Ciencias)
+Nombre | Grupo | Lunes | Martes | Miércoles | Jueves | Viernes
+Matemáticas | A | 08:00-10:00 |  |  | 10:00-12:00 |  
+"""
+    result = process_course(course_data)
+    assert len(result) == 1
+    assert result[0].nombre == "Matemáticas"
+    assert len(result[0].grupos) == 1
+    grupo = result[0].grupos[0]
+    assert grupo.letra == "A"
+    assert len(grupo.horarios) == 2
+    assert grupo.horarios[0].dia == "Lunes"
+    assert grupo.horarios[0].hora_inicio == "08:00"
+    assert grupo.horarios[0].hora_fin == "10:00"
+    assert grupo.horarios[1].dia == "Jueves"
+    assert grupo.horarios[1].hora_inicio == "10:00"
+    assert grupo.horarios[1].hora_fin == "12:00"
+
+def test_process_course_multiple_rows():
+    course_data = """1er Curso (Ciencias)
+Nombre | Grupo | Lunes | Martes | Miércoles | Jueves | Viernes
+Matemáticas | A | 08:00-10:00 |  |  | 10:00-12:00 |  
+Física | B |  | 09:00-11:00 |  |  |  
+"""
+    result = process_course(course_data)
+    assert len(result) == 2
+
+    matematicas = next(a for a in result if a.nombre == "Matemáticas")
+    assert len(matematicas.grupos) == 1
+    assert matematicas.grupos[0].letra == "A"
+
+    fisica = next(a for a in result if a.nombre == "Física")
+    assert len(fisica.grupos) == 1
+    assert fisica.grupos[0].letra == "B"
+    assert len(fisica.grupos[0].horarios) == 1
+    assert fisica.grupos[0].horarios[0].dia == "Martes"
+    assert fisica.grupos[0].horarios[0].hora_inicio == "09:00"
+    assert fisica.grupos[0].horarios[0].hora_fin == "11:00"
+
+def test_process_course_invalid_row_ignored():
+    course_data = """1er Curso (Ciencias)
+Nombre | Grupo | Lunes | Martes | Miércoles | Jueves | Viernes
+Matemáticas | A | 08:00-10:00 |  |  | 10:00-12:00 |  
+Física | B | InvalidData |  |  |  |  
+"""
+    result = process_course(course_data)
+    assert len(result) == 1
+    assert result[0].nombre == "Matemáticas"
+
+def test_process_course_empty_data():
+    course_data = """1er Curso (Ciencias)
+Nombre | Grupo | Lunes | Martes | Miércoles | Jueves | Viernes
+"""
+    result = process_course(course_data)
+    assert result == []
+
+def test_process_course_partial_data():
+    course_data = """1er Curso (Ciencias)
+Nombre | Grupo | Lunes | Martes | Miércoles | Jueves | Viernes
+Matemáticas | A | 08:00-10:00 |  |  |  |  
+"""
+    result = process_course(course_data)
+    assert len(result) == 1
+    matematicas = result[0]
+    assert matematicas.nombre == "Matemáticas"
+    assert len(matematicas.grupos) == 1
+    grupo = matematicas.grupos[0]
+    assert grupo.letra == "A"
+    assert len(grupo.horarios) == 1
+    assert grupo.horarios[0].dia == "Lunes"
+    assert grupo.horarios[0].hora_inicio == "08:00"
+    assert grupo.horarios[0].hora_fin == "10:00"
