@@ -75,3 +75,11 @@ def add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo):
             asignatura_existente.grupos.append(grupo)
     else:
         asignaturas.append(Asignatura_Grupos(nombre_asignatura, [grupo]))
+
+def parse_horario(file_path):
+    content = read_file(file_path)
+    courses = split_courses(content)
+    asignaturas = []
+    for course in courses:
+        asignaturas.extend(process_course(course))
+    return Matricula(asignaturas)
