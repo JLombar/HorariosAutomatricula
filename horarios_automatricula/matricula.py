@@ -24,3 +24,11 @@ def read_file(file_path):
         raise
     except Exception as e:
         raise RuntimeError(f"Error al leer el archivo: {e}")
+        
+def split_courses(content):
+    if not content:
+        return ['']
+    
+    sections = re.split(r'(?=\d+(?:er|do) Curso \(.*?\))', content)
+    
+    return [section.strip() for section in sections if section.strip()]
