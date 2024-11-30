@@ -5,6 +5,7 @@ from horarios_automatricula.matricula import read_file
 from horarios_automatricula.matricula import split_courses
 from horarios_automatricula.matricula import process_course
 from horarios_automatricula.matricula import process_horarios
+from horarios_automatricula.matricula import add_grupo_to_asignaturas
 from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
@@ -258,3 +259,67 @@ def test_process_horarios_whitespace_data():
     assert result[2].dia == "Viernes"
     assert result[2].hora_inicio == "15:00"
     assert result[2].hora_fin == "16:00"
+
+def test_add_grupo_to_asignaturas_new_asignatura():
+    asignaturas = []
+    grupo = Grupo("A", [Horario("Lunes", "08:00", "10:00")])
+    
+    add_grupo_to_asignaturas(asignaturas, "Matemáticas", grupo)
+    
+    assert len(asignaturas) == 1
+    assert asignaturas[0].nombre == "Matemáticas"
+    assert len(asignaturas[0].grupos) == 1
+    assert asignaturas[0].grupos[0].letra == "A"
+    assert asignaturas[0].grupos[0].horarios[0].dia == "Lunes"
+
+def test_add_grupo_to_asignaturas_existing_asignatura():
+    grupo_existente = Grupo("A", [Horario("Lunes", "08:00", "10:00")])
+    asignaturas = [Asignatura_Grupos("Matemáticas", [grupo_existente])]
+
+    grupo_nuevo = Grupo("B", [Horario("Martes", "10:00", "12:00")])
+    add_grupo_to_asignaturas(asignaturas, "Matemáticas", grupo_nuevo)
+    
+    assert len(asignaturas) == 1
+    assert asignaturas[0].nombre == "Matemáticas"
+    assert len(asignaturas[0].grupos) == 2
+    assert asignaturas[0].grupos[1].letra == "B"
+    assert asignaturas[0].grupos[1].horarios[0].dia == "Martes"
+
+def test_add_grupo_to_asignaturas_multiple_asignaturas():
+    grupo_matematicas = Grupo("A", [Horario("Lunes", "08:00", "10:00")])
+    grupo_fisica = Grupo("B", [Horario("Martes", "10:00", "12:00")])
+    asignaturas = [
+        Asignatura_Grupos("Matemáticas", [grupo_matematicas]),
+        Asignatura_Grupos("Física", [grupo_fisica]),
+    ]
+
+    grupo_nuevo = Grupo("C", [Horario("Miércoles", "12:00", "14:00")])
+    add_grupo_to_asignaturas(asignaturas, "Química", grupo_nuevo)
+    
+    assert len(asignaturas) == 3
+    quimica = next(a for a in asignaturas if a.nombre == "Química")
+    assert quimica.nombre == "Química"
+    assert len(quimica.grupos) == 1
+    assert quimica.grupos[0].letra == "C"
+    assert quimica.grupos[0].horarios[0].dia == "Miércoles"
+
+def test_add_grupo_to_asignaturas_no_duplicate_groups():
+    grupo_existente = Grupo("A", [Horario("Lunes", "08:00", "10:00")])
+    asignaturas = [Asignatura_Grupos("Matemáticas", [grupo_existente])]
+
+    add_grupo_to_asignaturas(asignaturas, "Matemáticas", grupo_existente)
+    
+    assert len(asignaturas) == 1
+    assert asignaturas[0].nombre == "Matemáticas"
+    assert len(asignaturas[0].grupos) == 1 
+
+def test_add_grupo_to_asignaturas_empty_list():
+    asignaturas = []
+    grupo = Grupo("A", [Horario("Lunes", "08:00", "10:00")])
+    
+    add_grupo_to_asignaturas(asignaturas, "Historia", grupo)
+    
+    assert len(asignaturas) == 1
+    assert asignaturas[0].nombre == "Historia"
+    assert len(asignaturas[0].grupos) == 1
+    assert asignaturas[0].grupos[0].letra == "A"
