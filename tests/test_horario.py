@@ -4,6 +4,7 @@ from horarios_automatricula.matricula import parse_horario
 from horarios_automatricula.matricula import read_file
 from horarios_automatricula.matricula import split_courses
 from horarios_automatricula.matricula import process_course
+from horarios_automatricula.matricula import process_horarios
 from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
@@ -145,3 +146,115 @@ Matemáticas | A | 08:00-10:00 |  |  |  |
     assert grupo.horarios[0].dia == "Lunes"
     assert grupo.horarios[0].hora_inicio == "08:00"
     assert grupo.horarios[0].hora_fin == "10:00"
+
+def test_process_horarios_valid_data():
+    lunes = "08:00-10:00"
+    martes = "09:00-11:00"
+    miercoles = ""
+    jueves = "10:00-12:00"
+    viernes = ""
+    
+    result = process_horarios(lunes, martes, miercoles, jueves, viernes)
+    assert len(result) == 3
+
+    assert result[0].dia == "Lunes"
+    assert result[0].hora_inicio == "08:00"
+    assert result[0].hora_fin == "10:00"
+
+    assert result[1].dia == "Martes"
+    assert result[1].hora_inicio == "09:00"
+    assert result[1].hora_fin == "11:00"
+
+    assert result[2].dia == "Jueves"
+    assert result[2].hora_inicio == "10:00"
+    assert result[2].hora_fin == "12:00"
+
+def test_process_horarios_empty_data():
+    lunes = ""
+    martes = ""
+    miercoles = ""
+    jueves = ""
+    viernes = ""
+    
+    result = process_horarios(lunes, martes, miercoles, jueves, viernes)
+    assert result == []
+
+def test_process_horarios_partial_data():
+    lunes = "08:00-10:00"
+    martes = ""
+    miercoles = "10:00-11:00"
+    jueves = ""
+    viernes = ""
+    
+    result = process_horarios(lunes, martes, miercoles, jueves, viernes)
+    assert len(result) == 2
+
+    assert result[0].dia == "Lunes"
+    assert result[0].hora_inicio == "08:00"
+    assert result[0].hora_fin == "10:00"
+
+    assert result[1].dia == "Miércoles"
+    assert result[1].hora_inicio == "10:00"
+    assert result[1].hora_fin == "11:00"
+
+def test_process_horarios_invalid_data():
+    lunes = "08:00-10:00"
+    martes = "invalid-data"
+    miercoles = "10:00-11:00"
+    jueves = "12:00"
+    viernes = "15:00-16:00"
+    
+    result = process_horarios(lunes, martes, miercoles, jueves, viernes)
+    assert len(result) == 3
+
+    assert result[0].dia == "Lunes"
+    assert result[0].hora_inicio == "08:00"
+    assert result[0].hora_fin == "10:00"
+
+    assert result[1].dia == "Miércoles"
+    assert result[1].hora_inicio == "10:00"
+    assert result[1].hora_fin == "11:00"
+
+    assert result[2].dia == "Viernes"
+    assert result[2].hora_inicio == "15:00"
+    assert result[2].hora_fin == "16:00"
+
+def test_process_horarios_malformed_time():
+    lunes = "08:00-10:00"
+    martes = "09:00-11"
+    miercoles = "10-11:00"
+    jueves = ""
+    viernes = "15:00-16:00"
+    
+    result = process_horarios(lunes, martes, miercoles, jueves, viernes)
+    assert len(result) == 2
+
+    assert result[0].dia == "Lunes"
+    assert result[0].hora_inicio == "08:00"
+    assert result[0].hora_fin == "10:00"
+
+    assert result[1].dia == "Viernes"
+    assert result[1].hora_inicio == "15:00"
+    assert result[1].hora_fin == "16:00"
+
+def test_process_horarios_whitespace_data():
+    lunes = "  08:00 - 10:00  "
+    martes = "   "
+    miercoles = "10:00 -  11:00"
+    jueves = ""
+    viernes = " 15:00 - 16:00 "
+    
+    result = process_horarios(lunes, martes, miercoles, jueves, viernes)
+    assert len(result) == 3
+
+    assert result[0].dia == "Lunes"
+    assert result[0].hora_inicio == "08:00"
+    assert result[0].hora_fin == "10:00"
+
+    assert result[1].dia == "Miércoles"
+    assert result[1].hora_inicio == "10:00"
+    assert result[1].hora_fin == "11:00"
+
+    assert result[2].dia == "Viernes"
+    assert result[2].hora_inicio == "15:00"
+    assert result[2].hora_fin == "16:00"
