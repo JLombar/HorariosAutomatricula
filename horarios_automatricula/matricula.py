@@ -32,3 +32,20 @@ def split_courses(content):
     sections = re.split(r'(?=\d+(?:er|do) Curso \(.*?\))', content)
     
     return [section.strip() for section in sections if section.strip()]
+
+def process_course(course):
+    rows = course.splitlines()[1:]
+    asignaturas = []
+    for row in rows:
+        if not row.strip() or '|' not in row:
+            continue
+        cols = [col.strip() for col in row.split("|")]
+        if len(cols) >= 7:
+            nombre_asignatura, grupo_letra, lunes, martes, miercoles, jueves, viernes = cols
+            if not nombre_asignatura or not grupo_letra:
+                continue
+            horarios = process_horarios(lunes, martes, miercoles, jueves, viernes)
+            if horarios:
+                grupo = Grupo(grupo_letra, horarios)
+                add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo)
+    return asignaturas    
