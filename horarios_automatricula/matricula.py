@@ -48,4 +48,22 @@ def process_course(course):
             if horarios:
                 grupo = Grupo(grupo_letra, horarios)
                 add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo)
-    return asignaturas    
+    return asignaturas
+
+def process_horarios(lunes, martes, miercoles, jueves, viernes):
+    horarios = []
+    dias_horarios = [
+        ('Lunes', lunes), 
+        ('Martes', martes), 
+        ('Miércoles', miercoles), 
+        ('Jueves', jueves), 
+        ('Viernes', viernes)
+    ]
+    for dia, horario in dias_horarios:
+        if horario and horario.strip() and '-' in horario:
+            try:
+                hora_inicio, hora_fin = map(str.strip, horario.split("-"))
+                horarios.append(Horario(dia, hora_inicio, hora_fin))
+            except Exception as e:
+                print(f"Error procesando horario para {dia}: {horario}. {e}")
+    return horarios
