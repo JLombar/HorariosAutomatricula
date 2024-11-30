@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import patch, mock_open
 from horarios_automatricula.matricula import parse_horario
 from horarios_automatricula.matricula import read_file
+from horarios_automatricula.matricula import split_courses
 from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
@@ -43,8 +44,29 @@ def test_read_file_permission_error():
 
 def test_read_file_empty_file():
     fake_path = "empty_file.txt"
-    
+
     with patch("builtins.open", mock_open(read_data="")) as mocked_file:
         with pytest.raises(ValueError, match="El archivo está vacío."):
             read_file(fake_path)
         mocked_file.assert_called_once_with(fake_path, "r", encoding="utf-8")
+
+def test_split_courses_multiple_sections():
+    content = "1er Curso (Primer Año)\nContenido del primer curso\n2do Curso (Segundo Año)\nContenido del segundo curso"
+    expected = [
+        "1er Curso (Primer Año)\nContenido del primer curso",
+        "2do Curso (Segundo Año)\nContenido del segundo curso"
+    ]
+    result = split_courses(content)
+    assert result == expected
+
+def test_split_courses_single_section():
+    content = "1er Curso (Primer Año)\nContenido del curso único"
+    expected = ["1er Curso (Primer Año)\nContenido del curso único"]
+    result = split_courses(content)
+    assert result == expected
+
+def test_split_courses_no_content():
+    content = ""
+    expected = [""]
+    result = split_courses(content)
+    assert result == expected
