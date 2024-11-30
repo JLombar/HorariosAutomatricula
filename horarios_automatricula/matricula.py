@@ -67,3 +67,11 @@ def process_horarios(lunes, martes, miercoles, jueves, viernes):
             except Exception as e:
                 print(f"Error procesando horario para {dia}: {horario}. {e}")
     return horarios
+
+def add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo):
+    asignatura_existente = next((a for a in asignaturas if a.nombre == nombre_asignatura), None)
+    if asignatura_existente:
+        if not any(g.letra == grupo.letra and g.horarios == grupo.horarios for g in asignatura_existente.grupos):
+            asignatura_existente.grupos.append(grupo)
+    else:
+        asignaturas.append(Asignatura_Grupos(nombre_asignatura, [grupo]))
