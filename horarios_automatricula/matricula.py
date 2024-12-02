@@ -34,8 +34,7 @@ def read_file(file_path: str):
 def split_courses(content: str):
     if not content:
         return ['']
-    
-    sections = re.split(r'(?=\d+(?:er|do) Curso \(.*?\))', content)
+    sections = re.split(r'(?=\d+(?:er|do|to) Curso \(.*?\))', content)
     
     return [section.strip() for section in sections if section.strip()]
 
