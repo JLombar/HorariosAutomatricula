@@ -4,14 +4,14 @@ from .grupo import Grupo
 import re
 
 class Matricula:
-    def __init__(self, asignaturas):
+    def __init__(self, asignaturas: Asignatura_Grupos):
         for asignatura in asignaturas:
             if not isinstance(asignatura, Asignatura_Grupos):
                 raise TypeError("Cada asignatura debe instancia de la clase Asignatura_Grupos")
             
         self.asignaturas = asignaturas
 
-def read_file(file_path):
+def read_file(file_path: str):
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             content = file.read()
@@ -25,7 +25,7 @@ def read_file(file_path):
     except Exception as e:
         raise RuntimeError(f"Error al leer el archivo: {e}")
         
-def split_courses(content):
+def split_courses(content: str):
     if not content:
         return ['']
     
@@ -33,7 +33,7 @@ def split_courses(content):
     
     return [section.strip() for section in sections if section.strip()]
 
-def process_course(course):
+def process_course(course: str):
     rows = course.splitlines()[1:]
     asignaturas = []
     for row in rows:
@@ -50,7 +50,7 @@ def process_course(course):
                 add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo)
     return asignaturas
 
-def process_horarios(lunes, martes, miercoles, jueves, viernes):
+def process_horarios(lunes:str, martes:str, miercoles:str, jueves:str, viernes:str):
     horarios = []
     dias_horarios = [
         ('Lunes', lunes), 
@@ -68,7 +68,7 @@ def process_horarios(lunes, martes, miercoles, jueves, viernes):
                 print(f"Error procesando horario para {dia}: {horario}. {e}")
     return horarios
 
-def add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo):
+def add_grupo_to_asignaturas(asignaturas: Asignatura_Grupos, nombre_asignatura: str, grupo: Grupo):
     asignatura_existente = next((a for a in asignaturas if a.nombre == nombre_asignatura), None)
     if asignatura_existente:
         if not any(g.letra == grupo.letra and g.horarios == grupo.horarios for g in asignatura_existente.grupos):
@@ -76,7 +76,7 @@ def add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo):
     else:
         asignaturas.append(Asignatura_Grupos(nombre_asignatura, [grupo]))
 
-def parse_horario(file_path):
+def parse_horario(file_path:str):
     content = read_file(file_path)
     courses = split_courses(content)
     asignaturas = []

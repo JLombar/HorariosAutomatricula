@@ -4,7 +4,7 @@ class Horario:
     DIAS_VALIDOS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
     HORA_REGEX = r"^(?:[01]?\d|2[0-3]):([0-5]?\d)$"
 
-    def __init__(self, dia, hora_inicio, hora_fin):
+    def __init__(self, dia: str, hora_inicio: str, hora_fin: str):
         if dia not in self.DIAS_VALIDOS:
             raise ValueError(f"El día '{dia}' no es válido. Debe ser uno de {self.DIAS_VALIDOS}.")
         

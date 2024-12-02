@@ -2,7 +2,7 @@ from .grupo import Grupo
 from datetime import datetime
 
 class Asignatura_Grupos:
-    def __init__(self, nombre, grupos):
+    def __init__(self, nombre: str, grupos: Grupo):
         for grupo in grupos:
             if not isinstance(grupo, Grupo):
                 raise TypeError("Cada grupo debe instancia de la clase Grupo")
@@ -10,14 +10,14 @@ class Asignatura_Grupos:
         self.nombre = nombre
         self.grupos = grupos
 
-def convertir_a_minutos(hora_str):
+def convertir_a_minutos(hora_str: str):
     try:
         hora = datetime.strptime(hora_str, "%H:%M")
         return hora.hour * 60 + hora.minute
     except ValueError:
         raise ValueError
 
-def comparar_horarios(asignatura1, asignatura2):
+def comparar_horarios(asignatura1: Asignatura_Grupos, asignatura2: Asignatura_Grupos):
     for grupo1 in asignatura1.grupos:
         for grupo2 in asignatura2.grupos:
             for horario1 in grupo1.horarios:
