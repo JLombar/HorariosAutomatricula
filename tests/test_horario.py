@@ -10,8 +10,8 @@ from horarios_automatricula.horario import Horario
 from horarios_automatricula.grupo import Grupo
 from horarios_automatricula.asignatura import Asignatura_Grupos
 from horarios_automatricula.matricula import Matricula
-from horarios_automatricula.asignatura import comparar_horarios
-from horarios_automatricula.asignatura import convertir_a_minutos
+from horarios_automatricula.horario import solapamiento
+from horarios_automatricula.horario import convertir_a_minutos
 from io import StringIO
 from unittest.mock import patch
 
@@ -353,7 +353,7 @@ def test_convertir_a_minutos_invalido():
         convertir_a_minutos("25:00")
         convertir_a_minutos("abc")
 
-def test_comparar_horarios_sin_superposicion():
+def test_solapamiento_sin_superposicion():
     horario1 = Horario("Lunes", "09:00", "11:00")
     grupo1 = Grupo("A", [horario1])
     asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
@@ -362,9 +362,9 @@ def test_comparar_horarios_sin_superposicion():
     grupo2 = Grupo("B", [horario2])
     asignatura2 = Asignatura_Grupos("Física", [grupo2])
 
-    assert comparar_horarios(asignatura1, asignatura2) is True 
+    assert solapamiento(horario1, horario2) is False 
 
-def test_comparar_horarios_con_superposicion():
+def test_solapamiento_con_superposicion():
     horario1 = Horario("Lunes", "09:00", "11:00")
     grupo1 = Grupo("A", [horario1])
     asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
@@ -373,10 +373,9 @@ def test_comparar_horarios_con_superposicion():
     grupo2 = Grupo("B", [horario2])
     asignatura2 = Asignatura_Grupos("Física", [grupo2])
 
-    with pytest.raises(ValueError):
-        comparar_horarios(asignatura1, asignatura2)
+    assert solapamiento(horario1, horario2) is True 
 
-def test_comparar_horarios_diferentes_dias():
+def test_solapamiento_diferentes_dias():
     horario1 = Horario("Lunes", "09:00", "11:00")
     grupo1 = Grupo("A", [horario1])
     asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
@@ -385,4 +384,4 @@ def test_comparar_horarios_diferentes_dias():
     grupo2 = Grupo("B", [horario2])
     asignatura2 = Asignatura_Grupos("Física", [grupo2])
 
-    assert comparar_horarios(asignatura1, asignatura2) is True
+    assert solapamiento(horario1, horario2) is False
