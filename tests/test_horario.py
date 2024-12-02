@@ -355,33 +355,18 @@ def test_convertir_a_minutos_invalido():
 
 def test_solapamiento_sin_superposicion():
     horario1 = Horario("Lunes", "09:00", "11:00")
-    grupo1 = Grupo("A", [horario1])
-    asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
-
     horario2 = Horario("Lunes", "11:30", "13:00")
-    grupo2 = Grupo("B", [horario2])
-    asignatura2 = Asignatura_Grupos("Física", [grupo2])
 
     assert solapamiento(horario1, horario2) is False 
 
 def test_solapamiento_con_superposicion():
     horario1 = Horario("Lunes", "09:00", "11:00")
-    grupo1 = Grupo("A", [horario1])
-    asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
-
     horario2 = Horario("Lunes", "10:30", "12:00")
-    grupo2 = Grupo("B", [horario2])
-    asignatura2 = Asignatura_Grupos("Física", [grupo2])
 
     assert solapamiento(horario1, horario2) is True 
 
 def test_solapamiento_diferentes_dias():
     horario1 = Horario("Lunes", "09:00", "11:00")
-    grupo1 = Grupo("A", [horario1])
-    asignatura1 = Asignatura_Grupos("Matemáticas", [grupo1])
-
     horario2 = Horario("Martes", "10:30", "12:00")
-    grupo2 = Grupo("B", [horario2])
-    asignatura2 = Asignatura_Grupos("Física", [grupo2])
 
     assert solapamiento(horario1, horario2) is False
