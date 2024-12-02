@@ -28,7 +28,7 @@ def test_read_file_no_encontrado():
     fake_path = "non_existent_file.txt"
     
     with patch("builtins.open", side_effect=FileNotFoundError):
-        with pytest.raises(ValueError, match="No se ha encontrado el archivo en la ruta correcta."):
+        with pytest.raises(ValueError, match=f"No se ha encontrado el archivo en la ruta {fake_path}"):
             read_file(fake_path)
 
 def test_read_file_error_inesperado():

@@ -25,7 +25,7 @@ def read_file(file_path: str):
                 raise ValueError("El archivo está vacío.")
             return content
     except FileNotFoundError:
-        raise ValueError("No se ha encontrado el archivo en la ruta correcta.")
+        raise ValueError(f"No se ha encontrado el archivo en la ruta {file_path}")
     except ValueError:
         raise
     except Exception as e:
