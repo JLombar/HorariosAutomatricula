@@ -56,7 +56,7 @@ def process_course(course: str):
                 add_grupo_to_asignaturas(asignaturas, nombre_asignatura, grupo)
     return asignaturas
 
-def process_horarios(lunes:str, martes:str, miercoles:str, jueves:str, viernes:str):
+def process_horarios(lunes: str, martes: str, miercoles: str, jueves: str, viernes: str):
     horarios = []
     dias_horarios = [
         ('Lunes', lunes), 
@@ -69,7 +69,11 @@ def process_horarios(lunes:str, martes:str, miercoles:str, jueves:str, viernes:s
         if horario and horario.strip() and '-' in horario:
             try:
                 hora_inicio, hora_fin = map(str.strip, horario.split("-"))
-                horarios.append(Horario(dia, hora_inicio, hora_fin))
+                
+                if Horario.es_hora_valida(hora_inicio) and Horario.es_hora_valida(hora_fin):
+                    horarios.append(Horario(dia, hora_inicio, hora_fin))
+                else:
+                    print(f"Formato de hora inválido para {dia}: {horario}.")
             except Exception as e:
                 print(f"Error procesando horario para {dia}: {horario}. {e}")
     return horarios

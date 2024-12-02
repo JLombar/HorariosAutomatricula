@@ -21,6 +21,11 @@ class Horario:
         if not re.match(self.HORA_REGEX, self.hora_fin):
             raise ValueError(f"La hora de fin '{self.hora_fin}' no tiene el formato correcto (HH:MM o HH).")
 
+    @staticmethod
+    def es_hora_valida(hora: str) -> bool:
+        """Valida si una hora cumple con el formato HH:MM."""
+        return re.match(Horario.HORA_REGEX, hora) is not None
+
 def convertir_a_minutos(hora_str: str):
     try:
         hora = datetime.strptime(hora_str, "%H:%M")
