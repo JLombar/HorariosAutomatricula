@@ -26,8 +26,8 @@ def read_file(file_path: str):
             return content
     except FileNotFoundError:
         raise ValueError(f"No se ha encontrado el archivo en la ruta {file_path}")
-    except ValueError:
-        raise
+    except ValueError as ve:
+        raise ve
     except Exception as e:
         raise RuntimeError(f"Error al leer el archivo: {e}")
         
