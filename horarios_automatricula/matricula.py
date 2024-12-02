@@ -1,15 +1,21 @@
+from dataclasses import dataclass
 from .asignatura import Asignatura_Grupos
 from .horario import Horario
 from .grupo import Grupo
 import re
+from typing import List
 
+@dataclass
 class Matricula:
-    def __init__(self, asignaturas: Asignatura_Grupos):
-        for asignatura in asignaturas:
+    asignaturas: List[Asignatura_Grupos]
+
+    def __post_init__(self):
+        if not self.asignaturas:
+            raise ValueError("La lista de asignaturas no puede estar vacía.")
+        
+        for asignatura in self.asignaturas:
             if not isinstance(asignatura, Asignatura_Grupos):
-                raise TypeError("Cada asignatura debe instancia de la clase Asignatura_Grupos")
-            
-        self.asignaturas = asignaturas
+                raise TypeError("Cada asignatura debe ser instancia de la clase Asignatura_Grupos.")
 
 def read_file(file_path: str):
     try:
