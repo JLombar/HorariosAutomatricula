@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Build Docker image
-        run: docker build -t horariosautomatricula:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/horariosautomatricula:latest .
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/horariosautomatricula:latest
