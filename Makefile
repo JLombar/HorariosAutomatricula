@@ -1,13 +1,12 @@
-.PHONY: test
+.PHONY: test install
 
-install-uv:
-	@echo "Instalando UV..."
-	@curl -LsSf https://astral.sh/uv/install.sh | sh
-
-install-dependencies: 
+install:
+	@echo "Installing dependencies..."
+	curl -LsSf https://astral.sh/uv/install.sh | sh
 	uv build
 
-install: install-uv install-dependencies
+test:
+	uv run pytest
 
 check:
 	@echo "Verificando la sintaxis de los archivos .py en horarios_automatricula..."
@@ -15,6 +14,3 @@ check:
 		echo "Verificando $$file..."; \
 		python -m py_compile $$file && echo "Sintaxis correcta en $$file" || echo "Error de sintaxis en $$file"; \
 	done
-
-test:
-	uv run pytest
