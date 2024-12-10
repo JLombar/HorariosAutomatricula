@@ -18,4 +18,5 @@ ENV PATH="$HOME/.local/bin:$PATH"
 
 RUN make install
 
-ENTRYPOINT ["make test"]
+ENTRYPOINT ["make"]
+CMD [ "test" ]
