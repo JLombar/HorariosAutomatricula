@@ -1,7 +1,5 @@
 FROM bitnami/python:latest
 
-RUN apt-get update
-
 RUN groupadd -r test && \
     useradd -r -g test -m test
 
