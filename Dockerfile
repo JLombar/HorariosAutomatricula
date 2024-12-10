@@ -8,6 +8,4 @@ USER test
 ENV HOME=/home/test
 ENV PATH="$HOME/.local/bin:$PATH"
 
-RUN make install
-
 CMD ["make", "test"]
