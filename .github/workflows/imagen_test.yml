@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - 'Dockerfile'
-      - '.github/workflows/imagen_test.yml'
       - 'Makefile'
       - '**/*.py'
 
