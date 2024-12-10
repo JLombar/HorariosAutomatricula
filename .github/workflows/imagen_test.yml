@@ -3,7 +3,6 @@ name: Docker Image
 on:
   push:
     paths:
-      - '.github/workflows/imagen_test.yml'
       - 'Dockerfile'
       - 'Makefile'
       - 'pyproject.toml'
