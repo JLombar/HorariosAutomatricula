@@ -1,3 +1,5 @@
+.PHONY: test
+
 install-uv:
 	@echo "Instalando UV..."
 	@curl -LsSf https://astral.sh/uv/install.sh | sh
