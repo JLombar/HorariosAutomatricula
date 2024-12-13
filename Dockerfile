@@ -44,5 +44,6 @@ ENV HOME=/home/userTest \
     UV_CACHE_DIR=/home/userTest/.cache/uv
 
 RUN make install
+RUN chmod -R a+w /home/userTest/.cache/
 
 ENTRYPOINT [ "make", "test" ]
