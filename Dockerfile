@@ -4,7 +4,6 @@ RUN apk add --no-cache \
     make \
     curl \
     shadow \
-    ca-certificates \
     gcc \
     g++ \
     musl-dev \
