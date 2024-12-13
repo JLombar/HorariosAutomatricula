@@ -19,4 +19,4 @@ ENV HOME=/home/userTest \
     UV_CACHE_DIR=/home/userTest/.cache/uv
 
 RUN make install
-CMD [ "make", "test" ]
+ENTRYPOINT [ "executable" ] [ "make", "test" ]
