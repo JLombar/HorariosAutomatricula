@@ -24,14 +24,11 @@ RUN curl -o /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSIO
     cd / && \
     rm -rf /usr/src/python /tmp/python.tar.xz
 
-
-
 RUN python3.12 --version
 
-RUN addgroup -S groupTest && \
-    adduser -D -h /home/userTest -G groupTest userTest && \
+RUN adduser -D -h /home/userTest  userTest && \
     mkdir -p /home/userTest/.cache/uv /app/test && \
-    chown -R userTest:groupTest /home/userTest /app/test
+    chown -R userTest /home/userTest /app/test
 
 WORKDIR /app/test
 
