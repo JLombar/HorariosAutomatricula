@@ -25,7 +25,9 @@ Otra alternativa la [imagen oficial de python del propio Docker](https://hub.doc
 Las vulnerabilidades no están disponibles en la pestaña tags. Si miramos la web de [snyk Advisor](https://snyk.io/advisor/docker/python) tampoco podemos ver las vulnerabilidades, por lo que no es seguro usar estas imágenes al no tener la información necesaria.
 ### bitnami/python
 La [imagen de bitnami para Python](https://hub.docker.com/r/bitnami/python), es actualizada rápidamente nuevas versiones de la imagen, recibiendo su última actualización hace menos de una semana, por lo que podemos asumir que tiene mantenimiento en activo. La imagen pesa sobre los 190MB, siendo un tamaño grande en comparación del resto de imágenes, pero no un gran tamaño como para descartar esta opción.
-Las imágenes de bitnami se basan en un minideb o scratch, por lo que tendrá funcionalidades extra, pero muy limitadas.
+Las imágenes de bitnami se basan en un minideb o scratch, por lo que tendrá funcionalidades extra.
+### bitnami/minideb
+La imagen de [bitnami/mindeb](https://hub.docker.com/r/bitnami/minideb) incluye muchos runtimes de lenguaje mantenidos por Bitnami, incluyendo PHP, Node.js, Ruby, y componentes de infraestructura como MariaDB, Redis, Nginx y MongoDB. En nuestro proyecto no usaremos la gran mayoría por lo que no son recomendables a tener funcionalidades extra.
 
 ## Elección final
 La imágen de python the bitnami será la elegida para nuestro proyecto ya que:
