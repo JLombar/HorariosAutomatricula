@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:latest AS build-python
 
 RUN apk add --no-cache \
     make \
@@ -22,7 +22,14 @@ RUN wget -O /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSIO
     cd / && \
     rm -rf /usr/src/python /tmp/python.tar.xz
 
-RUN adduser -D -h /home/userTest  userTest && \
+FROM alpine:latest
+
+RUN apk add --no-cache \
+    make
+
+COPY --from=build-python /usr/local /usr/local
+
+RUN adduser -D -h /home/userTest userTest && \
     mkdir -p /home/userTest/.cache/uv /app/test && \
     chown -R userTest /home/userTest /app/test
 
