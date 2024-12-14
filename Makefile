@@ -2,7 +2,7 @@
 
 install-uv:
 	@echo "Instalando UV..."
-	@curl -LsSf https://astral.sh/uv/install.sh | sh
+	@wget -qO- https://astral.sh/uv/install.sh | sh
 
 install-dependencies: 
 	uv build

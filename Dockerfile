@@ -2,7 +2,6 @@ FROM alpine:latest
 
 RUN apk add --no-cache \
     make \
-    curl \
     gcc \
     g++ \
     musl-dev \
@@ -12,7 +11,7 @@ RUN apk add --no-cache \
 
 ENV PYTHON_VERSION=3.13.1
 
-RUN curl -o /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz && \
+RUN wget -O /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz && \
     mkdir -p /usr/src/python && \
     tar -xf /tmp/python.tar.xz -C /usr/src/python --strip-components=1 && \
     cd /usr/src/python && \
@@ -20,7 +19,6 @@ RUN curl -o /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSIO
     make -j$(nproc) && \
     make altinstall && \
     ln -s /usr/local/bin/python3.13 /usr/local/bin/python3 && \
-    ln -s /usr/local/bin/python3.13 /usr/local/bin/python && \
     cd / && \
     rm -rf /usr/src/python /tmp/python.tar.xz
 
