@@ -1,7 +1,7 @@
 # Imagen para el contenedor
 La imagen deberá cumplir los siguientes requisitos:
 * Mantenimiento: debe tener un buen mantenimiento en activo para reducir la deuda técnica en el futuro
-* Se tendrá en cuenta que la imagen pese poco, optimizando recursos al necesitar menos memoria y mayor velocidad de despliegue.
+* Se tendrá en cuenta que la imagen pese poco, optimizando recursos al necesitar menos memoria.
 * Debe ser segura, es decir, que no tenga vulnerabilidades. Podemos comprobar las vulnerabilidades en la propia web de [Docker Hub](https://hub.docker.com/), en la pestaña de tags de cada imagen.
 * No se piden funcionalidades extras al sólo ser usada para testear el proyecto
 ## Algunas opciones
@@ -16,20 +16,25 @@ Las últimas versiones estables se publicaron hace una semana, por lo que es seg
 Su imagen latest, tiene muchas vulnerabilidades, por lo que no es seguro utilizarla.
 
 ### Debian
-La imagen de [Debian](https://hub.docker.com/_/debian) última imagen se hizo hace menos de una semana, por lo que tiene soporte activo. Pesa alrededor de 50MB, al igual que ubuntu, suelen ofrecer la versión base del sistema operativo, sin funcionalidades extra.  
-Como otras imágenes de las que hemos hablado, tiene gran cantidad de vulnerabilidades em todas sus variantes (tanto bookwoem, como slim, bullseye...) que no la hacen segura de usar.
+La imagen de [Debian](https://hub.docker.com/_/debian) última imagen se hizo hace menos de una semana, por lo que tiene soporte activo. Pesa alrededor de 50MB. Al igual que ubuntu, suelen ofrecer la versión base del sistema operativo, sin funcionalidades extra en estas variantes:
+* bullseye-slim: basada en Debian 11 optimizada, sólo contiene los paquetes esenciales, con un tamaño aprocimado de 22MB
+* bookworm-slim: es como bullseye pero basada en Debian 12, también pesa sobre los 30MB
+* debian:stable-slim: descargará la versión de Debian que sea la última versión "estable" en el momento.
+Como otras imágenes de las que hemos hablado, tiene gran cantidad de vulnerabilidades em todas sus variantes (tanto bookworm, como bullseye, las variantes slim...) que no la hacen segura de usar.
 ### Imagen "oficial" de Python
 Otra alternativa la [imagen oficial de python del propio Docker](https://hub.docker.com/_/python). Viene preinstalada con diferentes versiones de python y tiene diferentes variantes:
 * Alpine Linux: al igual que la ya explicada, es muy ligera y no incluye dependencias adicionales más allá de la instalación del sistema.
 * Debian "bookworm": el peso es de 149MB, excesiva ya que incluye muchas dependencias preinstaladas
-* Debien "bookworm-slim": la imagen es mucho mas pequeña que bookworm normal, su peso en el disco es 52MB. No incluye funcionalidades más allá del sistema operativo básico y las dependencias mínimas necesarias para ejecutar Python. 
+* Debian "bookworm-slim": la imagen es mucho mas pequeña que bookworm normal, su peso en el disco es 52MB. No incluye funcionalidades más allá del sistema operativo básico y las dependencias mínimas necesarias para ejecutar Python. 
 
 Todas sus imágenes cuentan con vulnerabilidades de importancia severa, por lo que no son apropiadas para su uso.
 ### bitnami/python
 La [imagen de bitnami para Python](https://hub.docker.com/r/bitnami/python), es actualizada rápidamente nuevas versiones de la imagen, recibiendo su última actualización hace menos de una semana, por lo que podemos asumir que tiene mantenimiento en activo. La imagen pesa sobre los 190MB, siendo un tamaño grande en comparación del resto de imágenes, pero no un gran tamaño como para descartar esta opción.
 Las imágenes de bitnami se basan en un minideb o scratch, por lo que tendrá funcionalidades extra, pero pocas.
 ### bitnami/minideb
-La imagen de [bitnami/mindeb](https://hub.docker.com/r/bitnami/minideb) incluye muchos runtimes de lenguaje mantenidos por Bitnami, incluyendo PHP, Node.js, Ruby, y componentes de infraestructura como MariaDB, Redis, Nginx y MongoDB. En nuestro proyecto no usaremos la gran mayoría por lo que no son recomendables a tener funcionalidades extra.
+La imagen de [bitnami/mindeb](https://hub.docker.com/r/bitnami/minideb) incluye muchos runtimes de lenguaje mantenidos por Bitnami, incluyendo PHP, Node.js, Ruby, y componentes de infraestructura como MariaDB, Redis, Nginx y MongoDB. En nuestro proyecto no usaremos la gran mayoría por lo que no es una buena imagen al tener muchas funcionalidades extra.
 
 ## Elección final
-Usaremos la última versión estable de Alpine, que no cuenta con vulnerabilidades, un peso reducido, cuenta con mantenimiento en activo y sin funcionalidades extra.
+Usaremos la última versión estable de Alpine, que no cuenta con vulnerabilidades, un peso reducido, cuenta con mantenimiento en activo y sin funcionalidades extra.  
+Para poder usar la imagen de Alpine Linux debemos instalar Python en la propia imagen, junto con todas las dependencias que esto conlleva. Para ello podemos aplicar la construcción de nuestra imagen en dos fases, reduciendo el peso de la imagen, eliminando las herramientas de desarrollo, consiguiendo menor exposición a vulnerabilidades y una aplicación aislada y segura.  
+Es cierto que al final resulta una imagen algo pesada comparada con el resto tras instalar python, pesando algo mas de 400MB. Sin embargo, no es un peso excesivamente grande como para que la descartemos al no ocupar demasiado en disco y sólo tardará en construirse la primera vez, ya que si queremos hacer cambios en la imagen los podemos hacer en la segunda fase, de forma que no debe construise entera de nuevo gracias a la construcción en fases.
