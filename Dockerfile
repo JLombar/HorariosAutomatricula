@@ -3,7 +3,6 @@ FROM alpine:latest
 RUN apk add --no-cache \
     make \
     curl \
-    shadow \
     gcc \
     g++ \
     musl-dev \
