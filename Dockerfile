@@ -16,9 +16,11 @@ RUN curl -o /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSIO
     mkdir -p /usr/src/python && \
     tar -xf /tmp/python.tar.xz -C /usr/src/python --strip-components=1 && \
     cd /usr/src/python && \
-    ./configure --enable-optimizations && \
+    ./configure && \
     make -j$(nproc) && \
     make altinstall && \
+    ln -s /usr/local/bin/python3.13 /usr/local/bin/python3 && \
+    ln -s /usr/local/bin/python3.13 /usr/local/bin/python && \
     cd / && \
     rm -rf /usr/src/python /tmp/python.tar.xz
 
@@ -37,6 +39,7 @@ ENV HOME=/home/userTest \
     UV_CACHE_DIR=/home/userTest/.cache/uv
 
 RUN make install
-RUN chmod -R a+w /home/userTest/.cache/
+RUN chmod -R a+w /home/userTest/.cache/ && \
+    chmod -R a+w /home/userTest/.local
 
 ENTRYPOINT [ "make", "test" ]
