@@ -10,7 +10,7 @@ RUN apk add --no-cache \
     libffi-dev \
     zlib-dev
 
-ENV PYTHON_VERSION=3.12.0
+ENV PYTHON_VERSION=3.13.1
 
 RUN curl -o /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz && \
     mkdir -p /usr/src/python && \
@@ -21,8 +21,6 @@ RUN curl -o /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSIO
     make altinstall && \
     cd / && \
     rm -rf /usr/src/python /tmp/python.tar.xz
-
-RUN python3.12 --version
 
 RUN adduser -D -h /home/userTest  userTest && \
     mkdir -p /home/userTest/.cache/uv /app/test && \
