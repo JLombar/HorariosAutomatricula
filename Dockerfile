@@ -1,4 +1,4 @@
-FROM python:3.13.1-alpine3.21
+FROM ghcr.io/astral-sh/uv:python3.13-alpine
 
 RUN apk add --no-cache make
 
@@ -9,14 +9,15 @@ RUN adduser -D -h /home/userTest userTest && \
 
 USER userTest
 
-COPY Makefile pyproject.toml ./
+RUN --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project --no-dev
 
-RUN mkdir -p /home/userTest/.cache/uv /app/test
+COPY Makefile pyproject.toml uv.lock ./ 
 
-ENV PATH=/home/userTest/.local/bin:$PATH \
-    UV_CACHE_DIR=/home/userTest/.cache/uv
+ENV UV_CACHE_DIR=/home/userTest/.cache/uv
 
-RUN make install && \
+RUN uv sync --frozen && \
     chmod -R a+w /home/userTest/.cache/
 
-ENTRYPOINT [ "make", "test" ]
+ENTRYPOINT ["make", "test"]
