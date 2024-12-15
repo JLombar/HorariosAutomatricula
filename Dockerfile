@@ -4,14 +4,13 @@ RUN apk add --no-cache make
 
 WORKDIR /app/test
 
-RUN adduser -D -h /home/userTest userTest && \
-    chown userTest:userTest /app/test
-
-USER userTest
-
 RUN --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project --no-dev
+
+RUN adduser -D -h /home/userTest userTest
+
+USER userTest
 
 COPY Makefile pyproject.toml uv.lock ./ 
 
