@@ -24,8 +24,7 @@ RUN wget -O /tmp/python.tar.xz https://www.python.org/ftp/python/${PYTHON_VERSIO
 
 FROM alpine:latest
 
-RUN apk add --no-cache \
-    make
+RUN apk add --no-cache make
 
 COPY --from=build-python /usr/local /usr/local
 
@@ -39,8 +38,7 @@ COPY Makefile pyproject.toml ./
 
 USER userTest
 
-ENV HOME=/home/userTest \
-    PATH=/home/userTest/.local/bin:$PATH \
+ENV PATH=/home/userTest/.local/bin:$PATH \
     UV_CACHE_DIR=/home/userTest/.cache/uv
 
 RUN make install
