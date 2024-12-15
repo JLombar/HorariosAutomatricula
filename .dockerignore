@@ -1,4 +1,5 @@
 *.md
+*png
 LICENSE
 *.yml
 *.yaml
