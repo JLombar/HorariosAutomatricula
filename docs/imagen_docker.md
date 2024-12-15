@@ -3,7 +3,6 @@ La imagen deberá cumplir los siguientes requisitos:
 * Mantenimiento: debe tener un buen mantenimiento en activo para reducir la deuda técnica en el futuro
 * Se tendrá en cuenta que la imagen pese poco, optimizando recursos al necesitar menos memoria.
 * Debe ser segura, es decir, que no tenga vulnerabilidades. Podemos comprobar las vulnerabilidades en la propia web de [Docker Hub](https://hub.docker.com/), en la pestaña de tags de cada imagen.
-* No se piden funcionalidades extras al sólo ser usada para testear el proyecto
 ## Algunas opciones
 Debemos elegir una imagen de Docker para nuestro proyecto, para ello revisaremos las siguientes imágenes, teniendo en mente los requisitos que hemos listado:
 
@@ -12,7 +11,7 @@ La imagen de [Alpine Linux](https://hub.docker.com/_/alpine) tiene un mantenimie
 Las últimas versiones estables se publicaron hace una semana, por lo que es seguro que tiene mantenimiento en activo. No tiene vulnerabilidades en su última versión estable, por lo que es segura para ser usada.
 
 ### Ubuntu
-[Ubuntu](https://hub.docker.com/_/ubuntu) cuenta con mantenimiento activo y soporte. Las imágenes pesan un poco menos de 30MB, un peso bastante bajo, cumpliendo con los requisito. Por último podemos concluir que es una buena opción al contar únicamente con la instalación base del sistema.  
+[Ubuntu](https://hub.docker.com/_/ubuntu) cuenta con mantenimiento activo y soporte. Las imágenes pesan un poco menos de 30MB, un peso bastante bajo, cumpliendo con los requisitos. Por último podemos concluir que es una buena opción al contar únicamente con la instalación base del sistema.  
 Su imagen latest, tiene muchas vulnerabilidades, por lo que no es seguro utilizarla.
 
 ### Debian
@@ -24,15 +23,13 @@ Como otras imágenes de las que hemos hablado, tiene gran cantidad de vulnerabil
 ### Imagen "oficial" de Python
 Otra alternativa la [imagen oficial de python del propio Docker](https://hub.docker.com/_/python). Viene preinstalada con diferentes versiones de python y tiene diferentes variantes:
 * Alpine Linux: al igual que la ya explicada, es muy ligera y no incluye dependencias adicionales más allá de la instalación del sistema.
-* Debian "bookworm": el peso es de 149MB, excesiva ya que incluye muchas dependencias preinstaladas
-* Debian "bookworm-slim": la imagen es mucho mas pequeña que bookworm normal, su peso en el disco es 52MB. No incluye funcionalidades más allá del sistema operativo básico y las dependencias mínimas necesarias para ejecutar Python. 
+* Debian "bookworm": el peso es de 149MB, excesivo ya que incluye muchas dependencias preinstaladas
+* Debian "bookworm-slim": la imagen es mucho mas pequeña que bookworm normal al no incluir funcionalidades más allá del sistema operativo básico y las dependencias mínimas necesarias para ejecutar Python, su peso en el disco es 52MB.
 
 Todas sus imágenes cuentan con vulnerabilidades de importancia severa, por lo que no son apropiadas para su uso.
 ### bitnami/python
 La [imagen de bitnami para Python](https://hub.docker.com/r/bitnami/python), es actualizada rápidamente nuevas versiones de la imagen, recibiendo su última actualización hace menos de una semana, por lo que podemos asumir que tiene mantenimiento en activo. La imagen pesa sobre los 190MB, siendo un tamaño grande en comparación del resto de imágenes, pero no un gran tamaño como para descartar esta opción.
 Las imágenes de bitnami se basan en un minideb o scratch, por lo que tendrá funcionalidades extra, pero pocas.
-### bitnami/minideb
-La imagen de [bitnami/mindeb](https://hub.docker.com/r/bitnami/minideb) incluye muchos runtimes de lenguaje mantenidos por Bitnami, incluyendo PHP, Node.js, Ruby, y componentes de infraestructura como MariaDB, Redis, Nginx y MongoDB. En nuestro proyecto no usaremos la gran mayoría por lo que no es una buena imagen al tener muchas funcionalidades extra.
 
 ## Elección final
 Usaremos la última versión estable de Alpine, que no cuenta con vulnerabilidades, un peso reducido, cuenta con mantenimiento en activo y sin funcionalidades extra.  
