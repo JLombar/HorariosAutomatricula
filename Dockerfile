@@ -12,7 +12,7 @@ RUN adduser -D -h /home/userTest userTest
 
 USER userTest
 
-COPY Makefile pyproject.toml uv.lock ./ 
+COPY pyproject.toml uv.lock ./ 
 
 ENV UV_CACHE_DIR=/home/userTest/.cache/uv
 
