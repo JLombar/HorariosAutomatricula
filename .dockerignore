@@ -6,3 +6,4 @@ LICENSE
 .gitignore
 .python-version
 Dockerfile
+.venv/
