@@ -37,4 +37,8 @@ Para ahorrarnos la instalación de python podríamos usar la imagen oficial de p
 
 Si usamos la imagen de uv basada en Alpine, sólo debemos añadir make ya que el resto de herramientas que usaremos son las únicas que vienen instaladas por defectoç
 ![Peso astralsh](./imgs/astralsh.png)
-De esta forma vemos que esta es la imagen más ligera entre nuestras opciones sin funcionalidades extra, siendo la elegida para nuestro repositorio.
+De esta forma vemos que esta es la imagen más ligera entre nuestras opciones sin funcionalidades extra, siendo la elegida para nuestro repositorio.  
+
+⚠️⚠️⚠️  
+Es importante recalcar que no es buena práctica usar una versión específica de un lenguaje como imagen base para nuestro proyecto. Esto se debe a que con las constantes actualizaciones puede ser que nuestra versión se quede deprecada y cargue con muchos bugs que no serán solucionados y otro tipo de problemas similares. Sin embargo la imagen de astral-sh no incluye una versión de la misma en la que no se especifique la versión del lenguaje así que se procederá con ella sabiendo que no es la forma correcta de realizar las cosas.   
+⚠️⚠️⚠️
