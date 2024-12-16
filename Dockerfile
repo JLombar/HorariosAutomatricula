@@ -4,19 +4,18 @@ RUN apk add --no-cache make
 
 WORKDIR /app/test
 
-RUN --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project --no-dev
+RUN mkdir -p /app/test/.venv && \
+    chmod -R a+w /app/test/.venv
 
 RUN adduser -D -h /home/userTest userTest
 
 USER userTest
 
-COPY pyproject.toml uv.lock ./ 
-
 ENV UV_CACHE_DIR=/home/userTest/.cache/uv
 
-RUN uv sync --frozen && \
+RUN --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project --no-dev && \
     chmod -R a+w /home/userTest/.cache/
 
 ENTRYPOINT ["make", "test"]
