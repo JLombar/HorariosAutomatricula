@@ -13,9 +13,7 @@ USER userTest
 
 ENV UV_CACHE_DIR=/home/userTest/.cache/uv
 
-RUN --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project --no-dev && \
+RUN mkdir -p /home/userTest/.cache/ && \
     chmod -R a+w /home/userTest/.cache/
 
 ENTRYPOINT ["make", "test"]
