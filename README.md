@@ -21,10 +21,3 @@ Para ejecutar los test del proyecto se debe ejecutar según las claves de [iv.ya
 ```bash
 make test
 ```
-
-## Imagen base para Docker
-La documentación sobre la imagen de base elegida para Docker se encuentra [aquí](./docs/imagen_docker.md).  
-Para ejecutarlo debemos usar el comando:
-```bash
-docker run -u 1001 -t -v `pwd`:/app/test jlombar/horariosautomatricula:latest
-```
