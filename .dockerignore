@@ -1,0 +1,9 @@
+*.md
+*png
+LICENSE
+*.yml
+*.yaml
+.gitignore
+.python-version
+Dockerfile
+.venv/
