@@ -1,0 +1,29 @@
+name: Docker Image
+
+on:
+  push:
+    paths:
+      - 'Dockerfile'
+      - 'Makefile'
+      - 'pyproject.toml'
+
+jobs:
+  build_publish:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/horariosautomatricula:latest

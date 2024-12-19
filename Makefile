@@ -1,6 +1,8 @@
+.PHONY: test install
+
 install-uv:
 	@echo "Instalando UV..."
-	@curl -LsSf https://astral.sh/uv/install.sh | sh
+	@wget -qO- https://astral.sh/uv/install.sh | sh
 
 install-dependencies: 
 	uv build
@@ -12,7 +14,6 @@ check:
 	@find horarios_automatricula -name "*.py" | while read file; do \
 		echo "Verificando $$file..."; \
 		python -m py_compile $$file && echo "Sintaxis correcta en $$file" || echo "Error de sintaxis en $$file"; \
-	done
 
 test:
 	uv run pytest
